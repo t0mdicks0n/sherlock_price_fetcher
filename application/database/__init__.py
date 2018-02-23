@@ -1,0 +1,57 @@
+import psycopg2
+import psycopg2.extras
+import json
+import sys
+import os
+
+class Database :
+	def __init__(self) :
+		if 'DOCKER' in os.environ :
+			try :
+				connection = psycopg2.connect(
+					dbname = "postgres",
+					user = "postgres",
+					hostaddr = "104.155.10.83",
+					host = "kivra-bi:invoicedb",
+					password = "PopA5m0aLF1D4x57",
+					sslmode = "verify-full",
+					sslrootcert = "/usr/src/app/certs/gcp_invoice/gce_ca.pem",
+					sslcert = "/usr/src/app/certs/gcp_invoice/gce_cert.pem",
+					sslkey = "/usr/src/app/certs/gcp_invoice/gce_key.pem",
+					application_name='Ulog BI Data Dumper'
+				)
+			except psycopg2.OperationalError as e:
+				print('Unable to connect to the GCE Invoice DB!\n{0}').format(e)
+			cur = connection.cursor()
+			cur_dict = connection.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
+		else :
+			try :
+				connection = psycopg2.connect(
+					dbname = "postgres",
+					user = "postgres",
+					hostaddr = "104.155.10.83",
+					host = "kivra-bi:invoicedb",
+					password = "PopA5m0aLF1D4x57",
+					sslmode = "verify-full",
+					sslrootcert = "/Users/tomdickson/crt/gce_server-ca.pem",
+					sslcert = "/Users/tomdickson/crt/gce_client-cert.pem",
+					sslkey = "/Users/tomdickson/crt/gce_client-key.pem",
+					application_name='Ulog BI Data Dumper'
+				)
+			except psycopg2.OperationalError as e:
+				print('Unable to connect to the GCE Invoice DB!\n{0}').format(e)
+			cur = connection.cursor()
+			cur_dict = connection.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
+
+		self.cur = cur
+		self.cur_dict = cur_dict
+		self.connection = connection
+		self.psycopg2 = psycopg2
+
+	def get_connection(self) :
+		return [self.cur, self.cur_dict, self.connection, self.psycopg2]
+
+	def close_connection(self) :
+		self.cur.close()
+		self.cur_dict.close()
+		self.connection.close()

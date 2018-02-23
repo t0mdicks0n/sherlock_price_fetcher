@@ -1,0 +1,10 @@
+# Project specific
+*.pyc
+.DS_Store
+__pycache__
+.cache
+
+# Database SSL certificates
+*.pem
+*.crt
+*.key
