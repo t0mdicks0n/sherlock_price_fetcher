@@ -27,19 +27,19 @@ class Database :
 		else :
 			try :
 				connection = psycopg2.connect(
-					dbname = "postgres",
+					dbname = "prices_prod",
 					user = "postgres",
-					hostaddr = "104.155.10.83",
-					host = "kivra-bi:invoicedb",
-					password = "PopA5m0aLF1D4x57",
+					hostaddr = "35.195.14.142",
+					host = "panprices:panprices-psql",
+					password = "9GAfs882PI1t9MDG",
 					sslmode = "verify-full",
-					sslrootcert = "/Users/tomdickson/crt/gce_server-ca.pem",
-					sslcert = "/Users/tomdickson/crt/gce_client-cert.pem",
-					sslkey = "/Users/tomdickson/crt/gce_client-key.pem",
-					application_name='Ulog BI Data Dumper'
+					sslrootcert = "/Users/Tom/cert/panprices/server-ca.pem",
+					sslcert = "/Users/Tom/cert/panprices/client-cert.pem",
+					sslkey = "/Users/Tom/cert/panprices/client-key.pem",
+					application_name='Sherlock Price Fetcher'
 				)
 			except psycopg2.OperationalError as e:
-				print('Unable to connect to the GCE Invoice DB!\n{0}').format(e)
+				print('Unable to connect to the Panprices Database!\n{0}').format(e)
 			cur = connection.cursor()
 			cur_dict = connection.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
 
