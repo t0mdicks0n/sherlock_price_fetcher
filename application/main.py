@@ -1,3 +1,5 @@
-from fetchers import testDB
+from fetchers import fetch_products
+from fetchers import fetch_product_id
 
-testDB()
+# fetch_products()
+fetch_product_id('Sony Xperia XA1 Ultra')
