@@ -1,5 +1,3 @@
-from fetchers import fetch_products
-from fetchers import fetch_product_id
+from jobs import sync_product_links
 
-# fetch_products()
-fetch_product_id('Sony Xperia XA1 Ultra')
+sync_product_links()

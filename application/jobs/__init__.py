@@ -1,0 +1,1 @@
+from pricerunner import sync_product_links
