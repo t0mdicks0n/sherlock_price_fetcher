@@ -23,4 +23,5 @@ def fetch_product_id (product_name, retries=10) :
 		print "There was an error with getting product data for " + product_name + " on Pricerunner: " + str(e)
 		raise e
 	finally :
-		return json.dumps(request.json(), indent=2, sort_keys=True)
+		res = request.json()
+		return res

@@ -20,11 +20,14 @@ def iterate_over_bucket(bucket, func_to_execute) :
 	# Free memory just in case
 	del bucket
 
-def threaded_execution(data, job) :
+def threaded_execution(data, job, user_define_job=False) :
 	buckets = split_tuple(data)
 	writing_threads = {}
 	for bucket_count, bucket in enumerate(buckets) :
-		writing_threads[bucket_count] = threading.Thread(target=iterate_over_bucket, args=([bucket, job]))
+		if user_define_job :
+			writing_threads[bucket_count] = threading.Thread(target=job, args=([bucket]))
+		else :
+			writing_threads[bucket_count] = threading.Thread(target=iterate_over_bucket, args=([bucket, job]))
 		writing_threads[bucket_count].start()
 	# Join all the threads
 	for i, bucket in enumerate(buckets) :

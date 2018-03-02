@@ -6,11 +6,12 @@ def fetch_products_without_pricerunner () :
 	try :
 		cur_dict.execute("""
 			SELECT
-				A.name
+				A.name,
+				A.id
 			FROM products A
 			LEFT JOIN pricerunner B
 			ON A.id = B.product_id
-			WHERE B.product_id IS NULL;
+			WHERE B.product_id IS NULL
 		""")
 		rows = cur_dict.fetchall()
 	except Exception as e :
