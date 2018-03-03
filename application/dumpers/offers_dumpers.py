@@ -1,7 +1,6 @@
 from database import Database
 
 def write_offers(offers_data) :
-	# print offers_data
 	psql = Database()
 	cur, cur_dict, connection, psycopg2 = psql.get_connection()
 	if len(offers_data) == 0 :
