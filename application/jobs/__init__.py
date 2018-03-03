@@ -1,1 +1,2 @@
 from pricerunner import sync_product_links
+from pricerunner import sync_pricerunner_offers

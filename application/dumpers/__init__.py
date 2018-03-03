@@ -1,1 +1,2 @@
 from pricerunner_dumpers import write_pricerunner
+from offers_dumpers import write_offers

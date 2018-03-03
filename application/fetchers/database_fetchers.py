@@ -18,3 +18,20 @@ def fetch_products_without_pricerunner () :
 		print("There was an error: ", e)
 	finally :
 		return rows
+
+def fetch_pricerunner_products () :
+	psql = Database()
+	cur, cur_dict, connection, psycopg2 = psql.get_connection()
+	try :
+		cur_dict.execute("""
+			SELECT
+				product_id,
+				url
+			FROM pricerunner
+			WHERE URL IS NOT NULL
+		""")
+		rows = cur_dict.fetchall()
+	except Exception as e :
+		print("There was an error: ", e)
+	finally :
+		return rows
