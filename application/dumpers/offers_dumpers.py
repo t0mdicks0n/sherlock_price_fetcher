@@ -20,17 +20,12 @@ def write_offers(offers_data) :
 				int_shipping,
 				offer_url
 			) VALUES 
-		""" + args_str) 
+		""" + args_str + """
+			ON CONFLICT (product_id, offer_source, retailer_name)
+			DO UPDATE SET 
+				(price, shipping_cost)
+				= (EXCLUDED.price, EXCLUDED.shipping_cost)
+		""") 
 		connection.commit()
 	except Exception as e :
 		print("There was an error when writing offers data to DB: ", e)
-
-	# product_id INTEGER,
-	# offer_source TEXT,
-	# retail_prod_name TEXT,
-	# retailer_name TEXT,
-	# country TEXT,
-	# price INTEGER,
-	# shipping_cost INTEGER,
-	# int_shipping BOOLEAN,
-	# offer_url TEXT

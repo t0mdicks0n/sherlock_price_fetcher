@@ -12,7 +12,10 @@ def iterate_and_fetch_products(products) :
 	found_products = []
 	try :
 		for i, product in enumerate(products) :
-			pricerunner_res = fetch_product_id(product['name'])
+			try : 
+				pricerunner_res = fetch_product_id(product['name'])
+			except Exception as e :
+				continue		
 			if len(pricerunner_res['products']) >= 1 :
 				products[i]['url'] = pricerunner_res['products'][0].get('url') or None
 				products[i]['lowest_price'] = pricerunner_res['products'][0].get('lowestPrice') or None
@@ -33,7 +36,10 @@ def iterate_and_fetch_offers(products) :
 	found_offers = []
 	try :
 		for i, product in enumerate(products) :
-			pricerunner_res = fetch_product_offers(product['url'])
+			try : 
+				pricerunner_res = fetch_product_offers(product['url'])
+			except Exception as e :
+				continue
 			# Maximum number of products from the result that I want to store
 			num_to_fetch = 4
 			while num_to_fetch > 0 :
