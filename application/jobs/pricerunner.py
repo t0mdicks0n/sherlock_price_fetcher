@@ -72,4 +72,3 @@ def sync_pricerunner_offers () :
 	products_for_sync = fetch_pricerunner_products()
 	threaded_execution(products_for_sync, iterate_and_fetch_offers, user_define_job=True)
 
-	# print fetch_product_offers('/pl/1-4393343/Mobiltelefoner/OnePlus-5T-64GB-Dual-SIM-priser')

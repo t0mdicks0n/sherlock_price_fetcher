@@ -1,0 +1,435 @@
+{
+  "ItemSearchResponse": {
+    "@xmlns": "http://webservices.amazon.com/AWSECommerceService/2013-08-01", 
+    "Items": {
+      "Item": [
+        {
+          "ASIN": "B01MZCWGYB", 
+          "OfferSummary": {
+            "LowestNewPrice": {
+              "Amount": "16300", 
+              "CurrencyCode": "GBP", 
+              "FormattedPrice": "\u00a3163.00"
+            }, 
+            "LowestUsedPrice": {
+              "Amount": "11864", 
+              "CurrencyCode": "GBP", 
+              "FormattedPrice": "\u00a3118.64"
+            }, 
+            "TotalCollectible": "0", 
+            "TotalNew": "3", 
+            "TotalRefurbished": "0", 
+            "TotalUsed": "40"
+          }, 
+          "Offers": {
+            "MoreOffersUrl": "https://www.amazon.co.uk/gp/offer-listing/B01MZCWGYB?SubscriptionId=AKIAJ6C2ILU7YSHX2APQ&tag=726774237-21&linkCode=xm2&camp=2025&creative=12734&creativeASIN=B01MZCWGYB", 
+            "Offer": {
+              "OfferAttributes": {
+                "Condition": "New"
+              }, 
+              "OfferListing": {
+                "AmountSaved": {
+                  "Amount": "1699", 
+                  "CurrencyCode": "GBP", 
+                  "FormattedPrice": "\u00a316.99"
+                }, 
+                "Availability": "Usually dispatched within 24 hours", 
+                "AvailabilityAttributes": {
+                  "AvailabilityType": "now", 
+                  "MaximumHours": "0", 
+                  "MinimumHours": "0"
+                }, 
+                "IsEligibleForPrime": "1", 
+                "IsEligibleForSuperSaverShipping": "1", 
+                "OfferListingId": "Z0OhDPfnkD%2BYKKqII7HF9TQY%2FyNgRiBB%2ByGRU2WKiZBwH748FMFqCdOrmOP9hYqgkY7FHtsqiMpBc94i9DkiDjvsjCfydRtTVbLPoeqbrn0%3D", 
+                "PercentageSaved": "9", 
+                "Price": {
+                  "Amount": "16300", 
+                  "CurrencyCode": "GBP", 
+                  "FormattedPrice": "\u00a3163.00"
+                }
+              }
+            }, 
+            "TotalOfferPages": "1", 
+            "TotalOffers": "1"
+          }, 
+          "ParentASIN": "B0754KCNVQ"
+        }, 
+        {
+          "ASIN": "B074DYXFCQ", 
+          "OfferSummary": {
+            "LowestUsedPrice": {
+              "Amount": "25000", 
+              "CurrencyCode": "GBP", 
+              "FormattedPrice": "\u00a3250.00"
+            }, 
+            "TotalCollectible": "0", 
+            "TotalNew": "0", 
+            "TotalRefurbished": "0", 
+            "TotalUsed": "1"
+          }, 
+          "Offers": {
+            "MoreOffersUrl": "0", 
+            "TotalOfferPages": "0", 
+            "TotalOffers": "0"
+          }, 
+          "ParentASIN": "B0754KCNVQ"
+        }, 
+        {
+          "ASIN": "B01GZZK95O", 
+          "OfferSummary": {
+            "LowestNewPrice": {
+              "Amount": "19899", 
+              "CurrencyCode": "GBP", 
+              "FormattedPrice": "\u00a3198.99"
+            }, 
+            "LowestUsedPrice": {
+              "Amount": "10821", 
+              "CurrencyCode": "GBP", 
+              "FormattedPrice": "\u00a3108.21"
+            }, 
+            "TotalCollectible": "0", 
+            "TotalNew": "5", 
+            "TotalRefurbished": "0", 
+            "TotalUsed": "42"
+          }, 
+          "Offers": {
+            "MoreOffersUrl": "0", 
+            "TotalOfferPages": "0", 
+            "TotalOffers": "0"
+          }, 
+          "ParentASIN": "B01MSMTGLK"
+        }, 
+        {
+          "ASIN": "B06XSXD4TY", 
+          "OfferSummary": {
+            "LowestNewPrice": {
+              "Amount": "19999", 
+              "CurrencyCode": "GBP", 
+              "FormattedPrice": "\u00a3199.99"
+            }, 
+            "TotalCollectible": "0", 
+            "TotalNew": "2", 
+            "TotalRefurbished": "0", 
+            "TotalUsed": "0"
+          }, 
+          "Offers": {
+            "MoreOffersUrl": "https://www.amazon.co.uk/gp/offer-listing/B06XSXD4TY?SubscriptionId=AKIAJ6C2ILU7YSHX2APQ&tag=726774237-21&linkCode=xm2&camp=2025&creative=12734&creativeASIN=B06XSXD4TY", 
+            "Offer": {
+              "OfferAttributes": {
+                "Condition": "New"
+              }, 
+              "OfferListing": {
+                "Availability": "Usually dispatched within 24 hours", 
+                "AvailabilityAttributes": {
+                  "AvailabilityType": "now", 
+                  "MaximumHours": "24", 
+                  "MinimumHours": "24"
+                }, 
+                "IsEligibleForPrime": "0", 
+                "IsEligibleForSuperSaverShipping": "0", 
+                "OfferListingId": "tS9N6OlBzi95Q3tZspWzE%2FrKj01foLE4obhvw8qFyapFQQ5V3dea5zQtjQwrCDDNvS1EQfKaZE2icdIWkIhWwqqZSeeIlNGcNJ0q%2FRRJfKau%2BHDMgW0oVG2Y1JGmOh1ahW%2FhIywj7lnkof%2BL4v4%2F%2FA%3D%3D", 
+                "Price": {
+                  "Amount": "19999", 
+                  "CurrencyCode": "GBP", 
+                  "FormattedPrice": "\u00a3199.99"
+                }
+              }
+            }, 
+            "TotalOfferPages": "1", 
+            "TotalOffers": "1"
+          }
+        }, 
+        {
+          "ASIN": "B06XDLXN28", 
+          "OfferSummary": {
+            "LowestNewPrice": {
+              "Amount": "23999", 
+              "CurrencyCode": "GBP", 
+              "FormattedPrice": "\u00a3239.99"
+            }, 
+            "TotalCollectible": "0", 
+            "TotalNew": "1", 
+            "TotalRefurbished": "0", 
+            "TotalUsed": "0"
+          }, 
+          "Offers": {
+            "MoreOffersUrl": "https://www.amazon.co.uk/gp/offer-listing/B06XDLXN28?SubscriptionId=AKIAJ6C2ILU7YSHX2APQ&tag=726774237-21&linkCode=xm2&camp=2025&creative=12734&creativeASIN=B06XDLXN28", 
+            "Offer": {
+              "OfferAttributes": {
+                "Condition": "New"
+              }, 
+              "OfferListing": {
+                "Availability": "Usually dispatched within 1-2 business days", 
+                "AvailabilityAttributes": {
+                  "AvailabilityType": "now", 
+                  "MaximumHours": "48", 
+                  "MinimumHours": "24"
+                }, 
+                "IsEligibleForPrime": "0", 
+                "IsEligibleForSuperSaverShipping": "0", 
+                "OfferListingId": "tS9N6OlBzi95Q3tZspWzE5PDbecOSi99t2PEVtBCIcutZ0XLrEdyRQpEOkZlmlmnjhHTy5wCD6psxsuAv5Qv2%2Fi2PZjfhXTCTgi7Ijqs%2Fdd7YV%2FWPWxPWEdlMifk9CUHsJIQHDyE454cCiMHZJskIF5WOcoKMK4l", 
+                "Price": {
+                  "Amount": "23999", 
+                  "CurrencyCode": "GBP", 
+                  "FormattedPrice": "\u00a3239.99"
+                }
+              }
+            }, 
+            "TotalOfferPages": "1", 
+            "TotalOffers": "1"
+          }
+        }, 
+        {
+          "ASIN": "B06XBYM2F6", 
+          "OfferSummary": {
+            "LowestNewPrice": {
+              "Amount": "21000", 
+              "CurrencyCode": "GBP", 
+              "FormattedPrice": "\u00a3210.00"
+            }, 
+            "TotalCollectible": "0", 
+            "TotalNew": "3", 
+            "TotalRefurbished": "0", 
+            "TotalUsed": "0"
+          }, 
+          "Offers": {
+            "MoreOffersUrl": "0", 
+            "TotalOfferPages": "0", 
+            "TotalOffers": "0"
+          }, 
+          "ParentASIN": "B076B7XNT6"
+        }, 
+        {
+          "ASIN": "B0712157XG", 
+          "OfferSummary": {
+            "LowestNewPrice": {
+              "Amount": "599", 
+              "CurrencyCode": "GBP", 
+              "FormattedPrice": "\u00a35.99"
+            }, 
+            "TotalCollectible": "0", 
+            "TotalNew": "1", 
+            "TotalRefurbished": "0", 
+            "TotalUsed": "0"
+          }, 
+          "Offers": {
+            "MoreOffersUrl": "https://www.amazon.co.uk/gp/offer-listing/B0712157XG?SubscriptionId=AKIAJ6C2ILU7YSHX2APQ&tag=726774237-21&linkCode=xm2&camp=2025&creative=12734&creativeASIN=B0712157XG", 
+            "Offer": {
+              "OfferAttributes": {
+                "Condition": "New"
+              }, 
+              "OfferListing": {
+                "Availability": "Usually dispatched within 1-2 business days", 
+                "AvailabilityAttributes": {
+                  "AvailabilityType": "now", 
+                  "MaximumHours": "48", 
+                  "MinimumHours": "24"
+                }, 
+                "IsEligibleForPrime": "0", 
+                "IsEligibleForSuperSaverShipping": "0", 
+                "OfferListingId": "tS9N6OlBzi%2FBA39Ijh2BAEM88ve5iD%2BB9zm4eNGhjbSSLo35EA3H%2B57nxDYAxhs0VT9Ps5i7ClB0VzzKBQs5YtKeHlZKppLkeqrR%2FanHqHQeiVbdN67QRRj1VWPs%2BfWv%2FkrfvIwAwHGMIBJMUEOBdLMF505mxvxD", 
+                "Price": {
+                  "Amount": "599", 
+                  "CurrencyCode": "GBP", 
+                  "FormattedPrice": "\u00a35.99"
+                }
+              }
+            }, 
+            "TotalOfferPages": "1", 
+            "TotalOffers": "1"
+          }, 
+          "ParentASIN": "B071ZHXMTC"
+        }, 
+        {
+          "ASIN": "B075SYF2DD", 
+          "OfferSummary": {
+            "LowestNewPrice": {
+              "Amount": "299", 
+              "CurrencyCode": "GBP", 
+              "FormattedPrice": "\u00a32.99"
+            }, 
+            "TotalCollectible": "0", 
+            "TotalNew": "1", 
+            "TotalRefurbished": "0", 
+            "TotalUsed": "0"
+          }, 
+          "Offers": {
+            "MoreOffersUrl": "https://www.amazon.co.uk/gp/offer-listing/B075SYF2DD?SubscriptionId=AKIAJ6C2ILU7YSHX2APQ&tag=726774237-21&linkCode=xm2&camp=2025&creative=12734&creativeASIN=B075SYF2DD", 
+            "Offer": {
+              "OfferAttributes": {
+                "Condition": "New"
+              }, 
+              "OfferListing": {
+                "Availability": "Usually dispatched within 1-2 business days", 
+                "AvailabilityAttributes": {
+                  "AvailabilityType": "now", 
+                  "MaximumHours": "48", 
+                  "MinimumHours": "24"
+                }, 
+                "IsEligibleForPrime": "0", 
+                "IsEligibleForSuperSaverShipping": "0", 
+                "OfferListingId": "tS9N6OlBzi%2FBA39Ijh2BAADP058hV82mwqmIBpzGvYIKtE7hbQRPpP9dmpM8wb1vVIm0f%2F7CFPmRm%2B7Fm64c5kHsj6mbZahJD2mE1FotujppFOGu93xGVCcplVoWfQ1YVkyb6k%2BMZDarprY%2B3YXmYEG8mUNjT0kB", 
+                "Price": {
+                  "Amount": "299", 
+                  "CurrencyCode": "GBP", 
+                  "FormattedPrice": "\u00a32.99"
+                }
+              }
+            }, 
+            "TotalOfferPages": "1", 
+            "TotalOffers": "1"
+          }, 
+          "ParentASIN": "B075SZ65F2"
+        }, 
+        {
+          "ASIN": "B071WLMW7Z", 
+          "OfferSummary": {
+            "LowestNewPrice": {
+              "Amount": "599", 
+              "CurrencyCode": "GBP", 
+              "FormattedPrice": "\u00a35.99"
+            }, 
+            "TotalCollectible": "0", 
+            "TotalNew": "2", 
+            "TotalRefurbished": "0", 
+            "TotalUsed": "0"
+          }, 
+          "Offers": {
+            "MoreOffersUrl": "https://www.amazon.co.uk/gp/offer-listing/B071WLMW7Z?SubscriptionId=AKIAJ6C2ILU7YSHX2APQ&tag=726774237-21&linkCode=xm2&camp=2025&creative=12734&creativeASIN=B071WLMW7Z", 
+            "Offer": {
+              "OfferAttributes": {
+                "Condition": "New"
+              }, 
+              "OfferListing": {
+                "Availability": "Usually dispatched within 24 hours", 
+                "AvailabilityAttributes": {
+                  "AvailabilityType": "now", 
+                  "MaximumHours": "0", 
+                  "MinimumHours": "0"
+                }, 
+                "IsEligibleForPrime": "1", 
+                "IsEligibleForSuperSaverShipping": "1", 
+                "OfferListingId": "tS9N6OlBzi%2FBA39Ijh2BAEJKal2uUQkNCK534xK7%2FYEyfRPY29SAQY0hssDuEHjfnaI%2B9cSJMiZvXV8A%2F1HL4uSbofJGlcALYJbcpKOtFoY2Iro45A1Qr9Dy0%2FsGE4DOKlcuG7wUfpbF84%2FDDSSAL%2FRuX6YnARmV", 
+                "Price": {
+                  "Amount": "747", 
+                  "CurrencyCode": "GBP", 
+                  "FormattedPrice": "\u00a37.47"
+                }
+              }
+            }, 
+            "TotalOfferPages": "1", 
+            "TotalOffers": "1"
+          }, 
+          "ParentASIN": "B071Z3LDZ4"
+        }, 
+        {
+          "ASIN": "B072PTB6QQ", 
+          "OfferSummary": {
+            "LowestNewPrice": {
+              "Amount": "599", 
+              "CurrencyCode": "GBP", 
+              "FormattedPrice": "\u00a35.99"
+            }, 
+            "TotalCollectible": "0", 
+            "TotalNew": "1", 
+            "TotalRefurbished": "0", 
+            "TotalUsed": "0"
+          }, 
+          "Offers": {
+            "MoreOffersUrl": "https://www.amazon.co.uk/gp/offer-listing/B072PTB6QQ?SubscriptionId=AKIAJ6C2ILU7YSHX2APQ&tag=726774237-21&linkCode=xm2&camp=2025&creative=12734&creativeASIN=B072PTB6QQ", 
+            "Offer": {
+              "OfferAttributes": {
+                "Condition": "New"
+              }, 
+              "OfferListing": {
+                "Availability": "Usually dispatched within 1-2 business days", 
+                "AvailabilityAttributes": {
+                  "AvailabilityType": "now", 
+                  "MaximumHours": "48", 
+                  "MinimumHours": "24"
+                }, 
+                "IsEligibleForPrime": "0", 
+                "IsEligibleForSuperSaverShipping": "0", 
+                "OfferListingId": "tS9N6OlBzi%2FBA39Ijh2BAElqWTYxGDXUFSyOQCdu66BNU23VNWBNbbJZtj0Vo81jNl85l%2BGcd0QZJKQ44D%2B448rKlJkfOugOi3SoHCz3sjdsQ3tNUfD3EX5zgevF%2F%2FSkUFNAAeYV5KGtQngVPScnPbFSm%2BPDw59Z", 
+                "Price": {
+                  "Amount": "599", 
+                  "CurrencyCode": "GBP", 
+                  "FormattedPrice": "\u00a35.99"
+                }
+              }
+            }, 
+            "TotalOfferPages": "1", 
+            "TotalOffers": "1"
+          }, 
+          "ParentASIN": "B072PV8NBY"
+        }
+      ], 
+      "MoreSearchResultsUrl": "https://www.amazon.co.uk/gp/search?linkCode=xm2&SubscriptionId=AKIAJ6C2ILU7YSHX2APQ&keywords=Motorola%20Moto%20G5%20Plus%20%283GB%20RAM%29%2032GB&tag=726774237-21&creative=12734&url=search-alias%3Daws-amazon-aps&camp=2025", 
+      "Request": {
+        "IsValid": "True", 
+        "ItemSearchRequest": {
+          "Keywords": "Motorola Moto G5 Plus (3GB RAM) 32GB", 
+          "ResponseGroup": "Offers", 
+          "SearchIndex": "All"
+        }
+      }, 
+      "TotalPages": "2", 
+      "TotalResults": "17"
+    }, 
+    "OperationRequest": {
+      "Arguments": {
+        "Argument": [
+          {
+            "@Name": "AWSAccessKeyId", 
+            "@Value": "AKIAJ6C2ILU7YSHX2APQ"
+          }, 
+          {
+            "@Name": "AssociateTag", 
+            "@Value": "726774237-21"
+          }, 
+          {
+            "@Name": "Keywords", 
+            "@Value": "Motorola Moto G5 Plus (3GB RAM) 32GB"
+          }, 
+          {
+            "@Name": "Operation", 
+            "@Value": "ItemSearch"
+          }, 
+          {
+            "@Name": "ResponseGroup", 
+            "@Value": "Offers"
+          }, 
+          {
+            "@Name": "SearchIndex", 
+            "@Value": "All"
+          }, 
+          {
+            "@Name": "Service", 
+            "@Value": "AWSECommerceService"
+          }, 
+          {
+            "@Name": "Timestamp", 
+            "@Value": "2018-03-04T00:07:51Z"
+          }, 
+          {
+            "@Name": "Version", 
+            "@Value": "2013-08-01"
+          }, 
+          {
+            "@Name": "Signature", 
+            "@Value": "7zmYzVu4i8lzBs/1ybBCSbQ1cnnjBPSpeQy5oIXSpqA="
+          }
+        ]
+      }, 
+      "HTTPHeaders": {
+        "Header": {
+          "@Name": "UserAgent", 
+          "@Value": "Python-urllib/2.7"
+        }
+      }, 
+      "RequestId": "1cd90ece-dda0-4d3f-9b29-ebc74f9bcd91", 
+      "RequestProcessingTime": "0.0928189650000000"
+    }
+  }
+}

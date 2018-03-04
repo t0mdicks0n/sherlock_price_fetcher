@@ -8,3 +8,6 @@ __pycache__
 *.pem
 *.crt
 *.key
+
+# API Keys
+*api_keys.json
