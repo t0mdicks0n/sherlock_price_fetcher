@@ -41,7 +41,7 @@
                 }, 
                 "IsEligibleForPrime": "1", 
                 "IsEligibleForSuperSaverShipping": "1", 
-                "OfferListingId": "Z0OhDPfnkD%2BYKKqII7HF9TQY%2FyNgRiBB%2ByGRU2WKiZBwH748FMFqCdOrmOP9hYqgkY7FHtsqiMpBc94i9DkiDjvsjCfydRtTVbLPoeqbrn0%3D", 
+                "OfferListingId": "ZCh9Jp7PC24btlOnpL4FIzLW9sKG2EZ1rl0HVMFi0wJsGUGuOksWgZeIwkbEgBTScDpkkx6zUEOv2nYC767beH2SUv0t%2BWZe9Ul%2BdIvqRf0%3D", 
                 "PercentageSaved": "9", 
                 "Price": {
                   "Amount": "16300", 
@@ -94,9 +94,36 @@
             "TotalUsed": "42"
           }, 
           "Offers": {
-            "MoreOffersUrl": "0", 
-            "TotalOfferPages": "0", 
-            "TotalOffers": "0"
+            "MoreOffersUrl": "https://www.amazon.co.uk/gp/offer-listing/B01GZZK95O?SubscriptionId=AKIAJ6C2ILU7YSHX2APQ&tag=726774237-21&linkCode=xm2&camp=2025&creative=12734&creativeASIN=B01GZZK95O", 
+            "Offer": {
+              "OfferAttributes": {
+                "Condition": "New"
+              }, 
+              "OfferListing": {
+                "AmountSaved": {
+                  "Amount": "1100", 
+                  "CurrencyCode": "GBP", 
+                  "FormattedPrice": "\u00a311.00"
+                }, 
+                "Availability": "Usually dispatched within 1-2 business days", 
+                "AvailabilityAttributes": {
+                  "AvailabilityType": "now", 
+                  "MaximumHours": "48", 
+                  "MinimumHours": "24"
+                }, 
+                "IsEligibleForPrime": "0", 
+                "IsEligibleForSuperSaverShipping": "0", 
+                "OfferListingId": "bVH4j50PY%2F9%2FFR02IzVHPmJlwSAihp3BmyEp708xUh7ENrYXJ9ZSPBQJ0oqYm12moKvwSZGRCGOCaQelYCTwnWC4UAsKNmk4fzJhW3fF8HiFLrWdEstVasQuXbw3FlbwjPhkA2czCmdBa2HMjyZDrfO0uj2hbh%2Bs", 
+                "PercentageSaved": "5", 
+                "Price": {
+                  "Amount": "19899", 
+                  "CurrencyCode": "GBP", 
+                  "FormattedPrice": "\u00a3198.99"
+                }
+              }
+            }, 
+            "TotalOfferPages": "1", 
+            "TotalOffers": "1"
           }, 
           "ParentASIN": "B01MSMTGLK"
         }, 
@@ -128,7 +155,7 @@
                 }, 
                 "IsEligibleForPrime": "0", 
                 "IsEligibleForSuperSaverShipping": "0", 
-                "OfferListingId": "tS9N6OlBzi95Q3tZspWzE%2FrKj01foLE4obhvw8qFyapFQQ5V3dea5zQtjQwrCDDNvS1EQfKaZE2icdIWkIhWwqqZSeeIlNGcNJ0q%2FRRJfKau%2BHDMgW0oVG2Y1JGmOh1ahW%2FhIywj7lnkof%2BL4v4%2F%2FA%3D%3D", 
+                "OfferListingId": "bVH4j50PY%2F%2BqWfsM67mbKzj5WpkBwpvYQc1p6PBDpWiOc0QZnubn8pHgwhWuMA%2ByKgE%2B9IHPURgN4FkfwFmO2HpPfhA7fIA1oSgItzicHsSGJRy%2BPIOfZxrWX%2F42WBMhTGh%2BpLArWKQ9omjkFv5Zvg%3D%3D", 
                 "Price": {
                   "Amount": "19999", 
                   "CurrencyCode": "GBP", 
@@ -168,7 +195,7 @@
                 }, 
                 "IsEligibleForPrime": "0", 
                 "IsEligibleForSuperSaverShipping": "0", 
-                "OfferListingId": "tS9N6OlBzi95Q3tZspWzE5PDbecOSi99t2PEVtBCIcutZ0XLrEdyRQpEOkZlmlmnjhHTy5wCD6psxsuAv5Qv2%2Fi2PZjfhXTCTgi7Ijqs%2Fdd7YV%2FWPWxPWEdlMifk9CUHsJIQHDyE454cCiMHZJskIF5WOcoKMK4l", 
+                "OfferListingId": "bVH4j50PY%2F%2BqWfsM67mbK4r1YieTwpjOctMRxoN79jVCPfLYUomxdqCN4lBUb%2Fd8r2PRh3ENvIex393snyMg6XT9DkvlCbCKn6HB8HBWYjVKky9YhU6VptpOd9FQ2NMMJX8iauOnBEqgW0%2BjHrvLsoLazeMae%2BYZ", 
                 "Price": {
                   "Amount": "23999", 
                   "CurrencyCode": "GBP", 
@@ -194,9 +221,30 @@
             "TotalUsed": "0"
           }, 
           "Offers": {
-            "MoreOffersUrl": "0", 
-            "TotalOfferPages": "0", 
-            "TotalOffers": "0"
+            "MoreOffersUrl": "https://www.amazon.co.uk/gp/offer-listing/B06XBYM2F6?SubscriptionId=AKIAJ6C2ILU7YSHX2APQ&tag=726774237-21&linkCode=xm2&camp=2025&creative=12734&creativeASIN=B06XBYM2F6", 
+            "Offer": {
+              "OfferAttributes": {
+                "Condition": "New"
+              }, 
+              "OfferListing": {
+                "Availability": "Usually dispatched within 2-3 business days", 
+                "AvailabilityAttributes": {
+                  "AvailabilityType": "now", 
+                  "MaximumHours": "72", 
+                  "MinimumHours": "48"
+                }, 
+                "IsEligibleForPrime": "0", 
+                "IsEligibleForSuperSaverShipping": "0", 
+                "OfferListingId": "bVH4j50PY%2F%2BqWfsM67mbKwqmi6Fh4V12aljwxgoKrxQAF7G6Ctm4XFiBKTSUfguTmAYhAZjYpXrlp7Tu9tr8Id4uenF3aur6QTRYJttggmMdU6Wfpa0oTlXj2QwQ%2FhBMp%2FTYZm%2B0e6izD5%2Fg%2BaaGcw%3D%3D", 
+                "Price": {
+                  "Amount": "30034", 
+                  "CurrencyCode": "GBP", 
+                  "FormattedPrice": "\u00a3300.34"
+                }
+              }
+            }, 
+            "TotalOfferPages": "1", 
+            "TotalOffers": "1"
           }, 
           "ParentASIN": "B076B7XNT6"
         }, 
@@ -228,7 +276,7 @@
                 }, 
                 "IsEligibleForPrime": "0", 
                 "IsEligibleForSuperSaverShipping": "0", 
-                "OfferListingId": "tS9N6OlBzi%2FBA39Ijh2BAEM88ve5iD%2BB9zm4eNGhjbSSLo35EA3H%2B57nxDYAxhs0VT9Ps5i7ClB0VzzKBQs5YtKeHlZKppLkeqrR%2FanHqHQeiVbdN67QRRj1VWPs%2BfWv%2FkrfvIwAwHGMIBJMUEOBdLMF505mxvxD", 
+                "OfferListingId": "bVH4j50PY%2F%2FqTqFXNuzI3w02OfZHuY83CgDm1rx4fwoB%2BvXDATzqaJqt3%2FVTqU3EcES2bf1eEIB%2BSDr%2BjPKg31iWr5PLxhABzHe4apNI%2BGY0pip%2BM%2FRQEO7uFMFlCr1VftQ5O7H9GPLjBUH8tPwUz7Uqo05y1z9r", 
                 "Price": {
                   "Amount": "599", 
                   "CurrencyCode": "GBP", 
@@ -240,6 +288,53 @@
             "TotalOffers": "1"
           }, 
           "ParentASIN": "B071ZHXMTC"
+        }, 
+        {
+          "ASIN": "B071WLMW7Z", 
+          "OfferSummary": {
+            "LowestNewPrice": {
+              "Amount": "599", 
+              "CurrencyCode": "GBP", 
+              "FormattedPrice": "\u00a35.99"
+            }, 
+            "TotalCollectible": "0", 
+            "TotalNew": "2", 
+            "TotalRefurbished": "0", 
+            "TotalUsed": "0"
+          }, 
+          "Offers": {
+            "MoreOffersUrl": "https://www.amazon.co.uk/gp/offer-listing/B071WLMW7Z?SubscriptionId=AKIAJ6C2ILU7YSHX2APQ&tag=726774237-21&linkCode=xm2&camp=2025&creative=12734&creativeASIN=B071WLMW7Z", 
+            "Offer": {
+              "OfferAttributes": {
+                "Condition": "New"
+              }, 
+              "OfferListing": {
+                "AmountSaved": {
+                  "Amount": "148", 
+                  "CurrencyCode": "GBP", 
+                  "FormattedPrice": "\u00a31.48"
+                }, 
+                "Availability": "Usually dispatched within 1-2 business days", 
+                "AvailabilityAttributes": {
+                  "AvailabilityType": "now", 
+                  "MaximumHours": "48", 
+                  "MinimumHours": "24"
+                }, 
+                "IsEligibleForPrime": "0", 
+                "IsEligibleForSuperSaverShipping": "0", 
+                "OfferListingId": "bVH4j50PY%2F%2FqTqFXNuzI3zbR4qNzYR17Kv7dwNxz2vue1wGmBd6chzKfnE5ESGezDZH95jIcTbpjNkDB05iZXXxgKnT2BNziCTyARU7x%2BBxDlYzinZUhpmbq2eWg3jJu%2FxpGCBbNq2MkAwsO%2FsEMnlDp5m9mFGB5", 
+                "PercentageSaved": "20", 
+                "Price": {
+                  "Amount": "599", 
+                  "CurrencyCode": "GBP", 
+                  "FormattedPrice": "\u00a35.99"
+                }
+              }
+            }, 
+            "TotalOfferPages": "1", 
+            "TotalOffers": "1"
+          }, 
+          "ParentASIN": "B071Z3LDZ4"
         }, 
         {
           "ASIN": "B075SYF2DD", 
@@ -269,7 +364,7 @@
                 }, 
                 "IsEligibleForPrime": "0", 
                 "IsEligibleForSuperSaverShipping": "0", 
-                "OfferListingId": "tS9N6OlBzi%2FBA39Ijh2BAADP058hV82mwqmIBpzGvYIKtE7hbQRPpP9dmpM8wb1vVIm0f%2F7CFPmRm%2B7Fm64c5kHsj6mbZahJD2mE1FotujppFOGu93xGVCcplVoWfQ1YVkyb6k%2BMZDarprY%2B3YXmYEG8mUNjT0kB", 
+                "OfferListingId": "bVH4j50PY%2F%2FqTqFXNuzI36CK%2FOvXYvPL7opFJk%2BMJjdaFa6CCEl%2BFMqzOLP5n8%2BKsOhOxsRBgDGASl7sZXEJ8FKkQPTULHeP3F3E9atN04OYobR5uBuTCebzy1Xps5cQkeSQl8oXRq9DiWjiOgoLRGdP3YciCyUG", 
                 "Price": {
                   "Amount": "299", 
                   "CurrencyCode": "GBP", 
@@ -281,47 +376,6 @@
             "TotalOffers": "1"
           }, 
           "ParentASIN": "B075SZ65F2"
-        }, 
-        {
-          "ASIN": "B071WLMW7Z", 
-          "OfferSummary": {
-            "LowestNewPrice": {
-              "Amount": "599", 
-              "CurrencyCode": "GBP", 
-              "FormattedPrice": "\u00a35.99"
-            }, 
-            "TotalCollectible": "0", 
-            "TotalNew": "2", 
-            "TotalRefurbished": "0", 
-            "TotalUsed": "0"
-          }, 
-          "Offers": {
-            "MoreOffersUrl": "https://www.amazon.co.uk/gp/offer-listing/B071WLMW7Z?SubscriptionId=AKIAJ6C2ILU7YSHX2APQ&tag=726774237-21&linkCode=xm2&camp=2025&creative=12734&creativeASIN=B071WLMW7Z", 
-            "Offer": {
-              "OfferAttributes": {
-                "Condition": "New"
-              }, 
-              "OfferListing": {
-                "Availability": "Usually dispatched within 24 hours", 
-                "AvailabilityAttributes": {
-                  "AvailabilityType": "now", 
-                  "MaximumHours": "0", 
-                  "MinimumHours": "0"
-                }, 
-                "IsEligibleForPrime": "1", 
-                "IsEligibleForSuperSaverShipping": "1", 
-                "OfferListingId": "tS9N6OlBzi%2FBA39Ijh2BAEJKal2uUQkNCK534xK7%2FYEyfRPY29SAQY0hssDuEHjfnaI%2B9cSJMiZvXV8A%2F1HL4uSbofJGlcALYJbcpKOtFoY2Iro45A1Qr9Dy0%2FsGE4DOKlcuG7wUfpbF84%2FDDSSAL%2FRuX6YnARmV", 
-                "Price": {
-                  "Amount": "747", 
-                  "CurrencyCode": "GBP", 
-                  "FormattedPrice": "\u00a37.47"
-                }
-              }
-            }, 
-            "TotalOfferPages": "1", 
-            "TotalOffers": "1"
-          }, 
-          "ParentASIN": "B071Z3LDZ4"
         }, 
         {
           "ASIN": "B072PTB6QQ", 
@@ -351,7 +405,7 @@
                 }, 
                 "IsEligibleForPrime": "0", 
                 "IsEligibleForSuperSaverShipping": "0", 
-                "OfferListingId": "tS9N6OlBzi%2FBA39Ijh2BAElqWTYxGDXUFSyOQCdu66BNU23VNWBNbbJZtj0Vo81jNl85l%2BGcd0QZJKQ44D%2B448rKlJkfOugOi3SoHCz3sjdsQ3tNUfD3EX5zgevF%2F%2FSkUFNAAeYV5KGtQngVPScnPbFSm%2BPDw59Z", 
+                "OfferListingId": "bVH4j50PY%2F%2FqTqFXNuzI354Z1rVpfzSvw50Va9zfDh9wtGBZoHEN96ODv%2FhxtgGD2XPsFcZKOJFgZcAbewb5bNsnFJ4ltfxLQB7dpbfOEhW%2BnW2G%2F5ehSVEDF0zHL6lwMKkjjj7t26Wo5od5yn6NT3vis9nGSChy", 
                 "Price": {
                   "Amount": "599", 
                   "CurrencyCode": "GBP", 
@@ -369,6 +423,7 @@
       "Request": {
         "IsValid": "True", 
         "ItemSearchRequest": {
+          "Condition": "New", 
           "Keywords": "Motorola Moto G5 Plus (3GB RAM) 32GB", 
           "ResponseGroup": "Offers", 
           "SearchIndex": "All"
@@ -387,6 +442,10 @@
           {
             "@Name": "AssociateTag", 
             "@Value": "726774237-21"
+          }, 
+          {
+            "@Name": "Condition", 
+            "@Value": "New"
           }, 
           {
             "@Name": "Keywords", 
@@ -410,7 +469,7 @@
           }, 
           {
             "@Name": "Timestamp", 
-            "@Value": "2018-03-04T00:07:51Z"
+            "@Value": "2018-03-04T08:48:40Z"
           }, 
           {
             "@Name": "Version", 
@@ -418,7 +477,7 @@
           }, 
           {
             "@Name": "Signature", 
-            "@Value": "7zmYzVu4i8lzBs/1ybBCSbQ1cnnjBPSpeQy5oIXSpqA="
+            "@Value": "AlQMWI8cxv9V5RN2Ey/VXKlbI9Cblm4uLJ2zQnwq0r8="
           }
         ]
       }, 
@@ -428,8 +487,8 @@
           "@Value": "Python-urllib/2.7"
         }
       }, 
-      "RequestId": "1cd90ece-dda0-4d3f-9b29-ebc74f9bcd91", 
-      "RequestProcessingTime": "0.0928189650000000"
+      "RequestId": "7a6b32c1-70e4-466a-a147-b16e62f6e55b", 
+      "RequestProcessingTime": "0.0473147300000000"
     }
   }
 }

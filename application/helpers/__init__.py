@@ -1,2 +1,3 @@
 from threading_helpers import threaded_execution
 from iter_file import IteratorFile
+from amazon_api import get_amazon_object

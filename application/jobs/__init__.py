@@ -1,3 +1,4 @@
 from pricerunner import sync_product_links
 from pricerunner import sync_pricerunner_offers
+from amazon import sync_amazon_products
 from amazon import sync_amazon_offers

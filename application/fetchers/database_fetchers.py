@@ -36,17 +36,21 @@ def fetch_pricerunner_products () :
 	finally :
 		return rows
 
-def fetch_products () :
+def fetch_products (country) :
 	psql = Database()
 	cur, cur_dict, connection, psycopg2 = psql.get_connection()
 	try :
 		cur_dict.execute("""
 			SELECT
-				name,
-				id
-			FROM products
+				A.name,
+				A.id,
+				A.price::float / B.to_sek AS price
+			FROM 
+				products A,
+				currency B
+			WHERE B.country = %s
 			LIMIT 100
-		""")
+		""", (country,))
 		rows = cur_dict.fetchall()
 	except Exception as e :
 		print("There was an error: ", e)

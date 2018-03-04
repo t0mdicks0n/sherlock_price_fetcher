@@ -60,6 +60,7 @@ def iterate_and_fetch_offers(products) :
 				except IndexError :
 					# No more items exists
 					num_to_fetch = 0
+		del products
 		write_offers(found_offers)
 	except Exception as e :
 		print("There was an error: ", e)
