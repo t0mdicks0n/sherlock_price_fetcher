@@ -36,7 +36,7 @@ def fetch_pricerunner_products () :
 	finally :
 		return rows
 
-def fetch_products (country) :
+def fetch_products_without_amazon (country) :
 	psql = Database()
 	cur, cur_dict, connection, psycopg2 = psql.get_connection()
 	try :
@@ -44,13 +44,35 @@ def fetch_products (country) :
 			SELECT
 				A.name,
 				A.id,
-				A.price::float / B.to_sek AS price
-			FROM 
-				products A,
-				currency B
-			WHERE B.country = %s
-			LIMIT 100
+				A.price::float / (SELECT to_sek FROM currency WHERE country = %s) AS price
+			FROM products A
+			LEFT JOIN amazon B
+			ON A.id = B.product_id
+			WHERE B.product_id IS NULL
+			AND price > 0
+			LIMIT 1000
 		""", (country,))
+		rows = cur_dict.fetchall()
+	except Exception as e :
+		print("There was an error: ", e)
+	finally :
+		return rows
+
+def fetch_amazon_products () :
+	psql = Database()
+	cur, cur_dict, connection, psycopg2 = psql.get_connection()
+	try :
+		cur_dict.execute("""
+			SELECT
+				product_id,
+				amazon_country,
+				asin_id,
+				product_name,
+				offer_url
+			FROM amazon
+			WHERE asin_id IS NOT NULL
+			LIMIT 10
+		""")
 		rows = cur_dict.fetchall()
 	except Exception as e :
 		print("There was an error: ", e)

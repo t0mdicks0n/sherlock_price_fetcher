@@ -2,6 +2,8 @@ from pricerunner_fetchers import fetch_product_id
 from pricerunner_fetchers import fetch_product_offers
 from database_fetchers import fetch_products_without_pricerunner
 from database_fetchers import fetch_pricerunner_products
-from database_fetchers import fetch_products
+from database_fetchers import fetch_products_without_amazon
+from database_fetchers import fetch_amazon_products
 from amazon_fetchers import search_for_product
 from amazon_fetchers import search_for_offer
+from currency_fetchers import fetch_exchange_rate
