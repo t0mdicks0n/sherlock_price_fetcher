@@ -21,15 +21,16 @@ def iterate_and_fetch_products(products, amazon, country) :
 				amazon_res = search_for_product(product['name'], amazon, product['price'])
 			except Exception as e :
 				continue
-			found_products.append([
-				product['id'],
-				country,
-				amazon_res['ASIN'],
-				amazon_res['ItemAttributes'].get('Manufacturer') or None,
-				amazon_res['ItemAttributes'].get('ProductGroup') or None,
-				amazon_res['ItemAttributes'].get('Title') or None,
-				amazon_res['DetailPageURL']
-			])
+			for result in amazon_res :
+				found_products.append([
+					product['id'],
+					country,
+					result['ASIN'],
+					result['ItemAttributes'].get('Manufacturer') or None,
+					result['ItemAttributes'].get('ProductGroup') or None,
+					result['ItemAttributes'].get('Title') or None,
+					result['DetailPageURL']
+				])
 		del products
 		# Write products to database
 		write_amazon(found_products)
@@ -37,19 +38,47 @@ def iterate_and_fetch_products(products, amazon, country) :
 		print("There was an error: ", e)
 		print products
 
+def ama_result_iterator (amazon_res, exchange_rate) :
+	fetched_data = []
+	for res in amazon_res :
+		if res['Offers'].has_key('Offer') :
+			fetched_data.append({
+				'merchant_name' : res['Offers']['Offer']['Merchant']['Name'],
+				'price' : amazon_value_to_sek(res['Offers']['Offer']['OfferListing']['Price']['Amount'], exchange_rate)
+			})
+		else :
+			fetched_data.append({
+				'merchant_name' : None,
+				'price' : None
+			})
+	return fetched_data
+
+def ama_batch_fetcher(products, amazon, exchange_rate) :
+	fetched_data = []
+	asin_batcher = []
+	for i, product in enumerate(products) :
+		if i > 0 and i%10 == 0 :
+			amazon_res = search_for_offer(','.join(asin_batcher), amazon)
+			fetched_data = fetched_data + ama_result_iterator(amazon_res, exchange_rate)
+			asin_batcher = []
+		asin_batcher.append(product['asin_id'])
+	amazon_res = search_for_offer(','.join(asin_batcher), amazon)
+	fetched_data = fetched_data + ama_result_iterator(amazon_res, exchange_rate)
+	return fetched_data
+
 def iterate_and_fetch_offers(products, amazon, country) :
 	found_offers = []
 	exchange_rate = fetch_exchange_rate(country)
+	offer_data = ama_batch_fetcher(products, amazon, exchange_rate)
 	try :
 		for i, product in enumerate(products) :
-			amazon_res = search_for_offer(product['asin_id'], amazon)
 			found_offers.append([
 				product['product_id'],
-				'amazon',
-				product['product_name'],
 				'amazon_' + country,
+				product['product_name'],
+				offer_data[i]['merchant_name'],
 				country,
-				amazon_value_to_sek(amazon_res['OfferListing']['Price']['Amount'], exchange_rate),
+				offer_data[i]['price'],
 				None,
 				None,
 				product['offer_url']

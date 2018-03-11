@@ -1,3 +1,4 @@
+import json
 
 def format_price(price) :
 	return format(price, '.2f').replace('.', '')
@@ -14,17 +15,20 @@ def search_for_product(product_name, amazon, price) :
 	except Exception as e:
 		print "There was an error when calling the Amazon API: ", e
 	finally :
-		return response['ItemSearchResponse']['Items']['Item'][0]
+		# print json.dumps(response, indent=2, sort_keys=True)
+		# Grab up to 4 responses
+		return response['ItemSearchResponse']['Items']['Item'][:4]
 
 def search_for_offer(asin, amazon) :
 	try :
 		response = amazon.ItemLookup(
 			ItemId=asin,
-			ResponseGroup="Offers",
+			ResponseGroup="OfferFull",
 			IdType="ASIN",
 			Condition="New"
 		)
 	except Exception as e:
 		print "There was an error when calling the Amazon API: ", e
 	finally :
-		return response['ItemLookupResponse']['Items']['Item']['Offers']['Offer']
+		# print json.dumps(response, indent=2, sort_keys=True)
+		return response['ItemLookupResponse']['Items']['Item']

@@ -50,7 +50,7 @@ def fetch_products_without_amazon (country) :
 			ON A.id = B.product_id
 			WHERE B.product_id IS NULL
 			AND price > 0
-			LIMIT 1000
+			LIMIT 50
 		""", (country,))
 		rows = cur_dict.fetchall()
 	except Exception as e :
@@ -71,7 +71,7 @@ def fetch_amazon_products () :
 				offer_url
 			FROM amazon
 			WHERE asin_id IS NOT NULL
-			LIMIT 10
+			LIMIT 50
 		""")
 		rows = cur_dict.fetchall()
 	except Exception as e :
