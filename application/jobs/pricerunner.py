@@ -45,22 +45,27 @@ def iterate_and_fetch_offers(products) :
 			while num_to_fetch > 0 :
 				try :
 					offer = pricerunner_res[4 - num_to_fetch]
-					found_offers.append([
-						products[i]['product_id'],
-						'pricerunner',
-						offer['retailerProductName'],
-						offer['retailer']['name'],
-						offer.get('country') or None,
-						int(offer['priceEx']['value'].split('.')[0]),
-						int(offer['shippingCostFixEx'].split('.')[0]),
-						True,
-						products[i]['url'],
-					])
+					# Only store items with links to the offers
+					if offer['_info'].get('wlink', None) is not None :
+						if offer['_info'].get('stockInfo', None) is not None :
+							if offer['_info']['stockInfo'].get('link', None) is not None :
+								found_offers.append([
+									products[i]['product_id'],
+									'pricerunner',
+									offer['retailerProductName'],
+									offer['retailer']['name'],
+									offer.get('country') or None,
+									int(offer['priceEx']['value'].split('.')[0]),
+									int(offer['shippingCostFixEx'].split('.')[0]),
+									True,
+									'https://www.pricerunner.se' + offer['_info']['stockInfo']['link']['href']
+								])
 					num_to_fetch -= 1
 				except IndexError :
 					# No more items exists
 					num_to_fetch = 0
 		del products
+		print found_offers
 		write_offers(found_offers)
 	except Exception as e :
 		print("There was an error: ", e)
