@@ -20,7 +20,7 @@ def write_offers(offers_data) :
 				offer_url
 			) VALUES 
 		""" + args_str + """
-			ON CONFLICT (product_id, offer_source, retailer_name, retail_prod_name)
+			ON CONFLICT (product_id, offer_source, retailer_name, retail_prod_name, offer_url)
 			DO UPDATE SET 
 				(price, shipping_cost)
 				= (EXCLUDED.price, EXCLUDED.shipping_cost)
