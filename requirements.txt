@@ -4,4 +4,3 @@ schedule
 python-dateutil
 requests
 bottlenose
-ebaysdk

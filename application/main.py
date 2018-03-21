@@ -8,4 +8,4 @@ from jobs import sync_ebay_offers
 # sync_pricerunner_offers()
 # sync_amazon_products('UK')
 # sync_amazon_offers('UK')
-sync_ebay_offers('UK', "iPhone X 64GB")
+sync_ebay_offers('UK')

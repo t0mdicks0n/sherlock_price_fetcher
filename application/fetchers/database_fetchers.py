@@ -78,3 +78,21 @@ def fetch_amazon_products () :
 		print("There was an error: ", e)
 	finally :
 		return rows
+
+def fetch_products_without_ebay () :
+	psql = Database()
+	cur, cur_dict, connection, psycopg2 = psql.get_connection()
+	try :
+		cur_dict.execute("""
+			SELECT
+				name,
+				id
+			FROM products
+			LIMIT 50
+		"""
+		)
+		rows = cur_dict.fetchall()
+	except Exception as e :
+		print("There was an error: ", e)
+	finally :
+		return rows

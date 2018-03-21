@@ -16,16 +16,18 @@ def search_for_offer(api_key, country, product_name) :
 				"affiliate.networkId=9&" +
 				"affiliate.trackingId=5338271690&" +
 				"keywords={1}&" + 
-				"itemFilter.name=Condition&itemFilter.value=New&" +
-				"itemFilter.name=SellerBusinessType&itemFilter.value=Business"
+				"itemFilter(0).name=Condition&itemFilter(0).value=1000&" +
+				"itemFilter(1).name=SellerBusinessType&itemFilter(1).value=Business&" +
+				"itemFilter(2).name=TopRatedSellerOnly&itemFilter(2).value=true&" +
+				"itemFilter(3).name=HideDuplicateItems&itemFilter(3).value=true&"
 		).format(
 			api_key['APPNAME'],
 			url_encode(product_name)
 		)
-
 		res = requests.get(request_string)
 		dict_res = xmltodict.parse(res.content)
-
-		print json.dumps(dict_res, indent=2)
 	except Exception as e:
 		print("There was an error when fetching product data from eBay: ", e)
+	finally :
+		print json.dumps(dict_res['findItemsAdvancedResponse']['searchResult']['item'][:4], indent=2)
+		return dict_res['findItemsAdvancedResponse']['searchResult']['item'][:4]
