@@ -5,7 +5,7 @@ import xmltodict
 def url_encode(string) :
 	return "%20".join(string.split(" "))
 
-def search_for_offer(api_key, country, product_name) :
+def search_for_offer(api_key, country, product_name, price) :
 	try:
 		request_string = str("http://svcs.ebay.com/services/search/FindingService/v1?" + 
 			"OPERATION-NAME=findItemsAdvanced&SERVICE-VERSION=1.0.0&" + 
@@ -19,10 +19,12 @@ def search_for_offer(api_key, country, product_name) :
 				"itemFilter(0).name=Condition&itemFilter(0).value=1000&" +
 				"itemFilter(1).name=SellerBusinessType&itemFilter(1).value=Business&" +
 				"itemFilter(2).name=TopRatedSellerOnly&itemFilter(2).value=true&" +
-				"itemFilter(3).name=HideDuplicateItems&itemFilter(3).value=true&"
+				"itemFilter(3).name=HideDuplicateItems&itemFilter(3).value=true&" +
+				"itemFilter(4).name=MinPrice&itemFilter(4).value={2}"
 		).format(
 			api_key['APPNAME'],
-			url_encode(product_name)
+			url_encode(product_name),
+			str(float(price) * 0.50)
 		)
 		res = requests.get(request_string)
 		dict_res = xmltodict.parse(res.content)

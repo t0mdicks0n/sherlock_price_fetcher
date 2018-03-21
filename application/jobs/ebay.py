@@ -9,7 +9,7 @@ def iterate_and_fetch_offers(products, ebay_keys, country) :
 	exchange_rate = fetch_exchange_rate(country)
 	for i, product in enumerate(products) :
 		try : 
-			ebay_res = search_for_offer(ebay_keys, country, product['name'])
+			ebay_res = search_for_offer(ebay_keys, country, product['name'], product['price'])
 		except Exception as e :
 			continue
 		finally :
@@ -28,6 +28,6 @@ def iterate_and_fetch_offers(products, ebay_keys, country) :
 	write_offers(found_offers)
 
 def sync_ebay_offers(country) :
-	products_for_sync = fetch_products_without_ebay() 
+	products_for_sync = fetch_products_without_ebay(country)
 	ebay_keys = json.load(open('application/config/api_keys.json'))['ebay']
 	iterate_and_fetch_offers(products_for_sync, ebay_keys, country)
