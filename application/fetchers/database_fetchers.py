@@ -90,7 +90,7 @@ def fetch_products_without_ebay (country) :
 				price::float / (SELECT to_sek FROM currency WHERE country = %s) AS price
 			FROM products
 			WHERE price > 0
-			LIMIT 50
+			LIMIT 300
 		""", (country,))
 		rows = cur_dict.fetchall()
 	except Exception as e :
