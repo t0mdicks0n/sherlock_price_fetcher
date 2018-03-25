@@ -5,7 +5,9 @@ from database_fetchers import fetch_pricerunner_products
 from database_fetchers import fetch_products_without_amazon
 from database_fetchers import fetch_amazon_products
 from database_fetchers import fetch_products_without_ebay
+from database_fetchers import fetch_products_without_kelkoo
 from amazon_fetchers import search_for_product
 from amazon_fetchers import search_for_offer
 from currency_fetchers import fetch_exchange_rate
-from ebay_fetchers import search_for_offer
+from ebay_fetchers import search_for_offer as search_for_e_offer
+from kelkoo_fetchers import search_for_offer as search_for_k_offer

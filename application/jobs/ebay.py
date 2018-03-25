@@ -1,4 +1,4 @@
-from fetchers import search_for_offer
+from fetchers import search_for_e_offer
 from fetchers import fetch_products_without_ebay
 from fetchers import fetch_exchange_rate
 from dumpers import write_offers

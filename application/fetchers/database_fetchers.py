@@ -97,3 +97,22 @@ def fetch_products_without_ebay (country) :
 		print("There was an error: ", e)
 	finally :
 		return rows
+
+def fetch_products_without_kelkoo(country) :
+	psql = Database()
+	cur, cur_dict, connection, psycopg2 = psql.get_connection()
+	try :
+		cur_dict.execute("""
+			SELECT
+				name,
+				id,
+				price::float / (SELECT to_sek FROM currency WHERE country = %s) AS price
+			FROM products
+			WHERE price > 0
+			LIMIT 300
+		""", (country,))
+		rows = cur_dict.fetchall()
+	except Exception as e :
+		print("There was an error: ", e)
+	finally :
+		return rows	
