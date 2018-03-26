@@ -2,43 +2,33 @@
 import json
 import requests
 import xmltodict
-
-# Kelkoo bullshit
 import time
 import hashlib
 
 def url_encode(string) :
 	return "%20".join(string.split(" "))
 
-def search_for_offer() :
-	req_url = sign_url('http://se.shoppingapis.kelkoo.com' +
-	'/V3/productSearch?query=ipod&sort=default_ranking&start=1&results=20&show_products=1&show_subcategories=1&show_refinements=1&' +
-	'aid=96954747', 'c49KarBx')
-
+def search_for_offer(api_keys, country, product_name, price) :
 	try:
-		# request_string = str(
-		# 	"http://se.shoppingapis.kelkoo.com/V3/productSearch?" +
-		# 		"query=iPhone%20X%2064GB&" +
-		# 		"sort=default_ranking&" +
-		# 		"start=1&" + 
-		# 		"results=20&" + 
-		# 		"show_products=1&" +
-		# 		"show_subcategories=1&" +
-		# 		"show_refinements=1&" + 
-		# 		"aid=96954747×tamp=1521995231&" + 
-		# 		"hash=WPXecOP6qlfscHzBQewlOg--"
-		# ).format()
-
+		req_url = sign_url(
+			url_domain = str('http://{0}.shoppingapis.kelkoo.com' +
+				'/V3/productSearch?query={1}&' +
+				'sort=default_ranking&start=1&results=20&price_min={2}&show_products=1&show_subcategories=1&show_refinements=1&' +
+				'aid={3}').format(
+					country.lower(),
+					url_encode(product_name),
+					str(int(float(price) * 0.50)),
+					api_keys['id']
+				),
+			key = api_keys['key']
+		)
 		res = requests.get(req_url)
-		
-		print res.content
-
 		dict_res = xmltodict.parse(res.content)
 	except Exception as e:
 		print("There was an error when fetching product data from Kelkoo: ", e)
 	finally :
-		print json.dumps(dict_res, indent=2)
-		# return dict_res['findItemsAdvancedResponse']['searchResult']['item'][:4]
+		# print json.dumps(dict_res['ProductSearch']['Products']['Product'][:10], indent=2)
+		return dict_res['ProductSearch']['Products']['Product'][:5]
 
 def sign_url(url_domain, key) :
 	# Creating a Unix timestamp for right now without milliseconds
