@@ -15,6 +15,7 @@ def iterate_and_fetch_products(products) :
 			try : 
 				pricerunner_res = fetch_product_id(product['name'])
 			except Exception as e :
+				print "There was an error with fetching product data from Pricerunner: ", str(e)
 				continue		
 			if len(pricerunner_res['products']) >= 1 :
 				products[i]['url'] = pricerunner_res['products'][0].get('url') or None
@@ -39,6 +40,7 @@ def iterate_and_fetch_offers(products) :
 			try : 
 				pricerunner_res = fetch_product_offers(product['url'])
 			except Exception as e :
+				print "There was an error with fetching offer data from Pricerunner: ", str(e)
 				continue
 			# Maximum number of products from the result that I want to store
 			num_to_fetch = 4
@@ -65,7 +67,6 @@ def iterate_and_fetch_offers(products) :
 					# No more items exists
 					num_to_fetch = 0
 		del products
-		print found_offers
 		write_offers(found_offers)
 	except Exception as e :
 		print("There was an error: ", e)

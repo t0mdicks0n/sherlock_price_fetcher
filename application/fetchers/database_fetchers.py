@@ -50,7 +50,7 @@ def fetch_products_without_amazon (country) :
 			ON A.id = B.product_id
 			WHERE B.product_id IS NULL
 			AND price > 0
-			LIMIT 50
+			LIMIT 100
 		""", (country,))
 		rows = cur_dict.fetchall()
 	except Exception as e :
@@ -71,7 +71,7 @@ def fetch_amazon_products () :
 				offer_url
 			FROM amazon
 			WHERE asin_id IS NOT NULL
-			LIMIT 50
+			LIMIT 100
 		""")
 		rows = cur_dict.fetchall()
 	except Exception as e :
@@ -90,7 +90,7 @@ def fetch_products_without_ebay (country) :
 				price::float / (SELECT to_sek FROM currency WHERE country = %s) AS price
 			FROM products
 			WHERE price > 0
-			LIMIT 30
+			LIMIT 100
 		""", (country,))
 		rows = cur_dict.fetchall()
 	except Exception as e :
@@ -109,7 +109,7 @@ def fetch_products_without_kelkoo(country) :
 				price::float / (SELECT to_sek FROM currency WHERE country = %s) AS price
 			FROM products
 			WHERE price > 0
-			LIMIT 10
+			LIMIT 100
 		""", (country,))
 		rows = cur_dict.fetchall()
 	except Exception as e :

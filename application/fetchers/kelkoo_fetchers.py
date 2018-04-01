@@ -13,11 +13,12 @@ def search_for_offer(api_keys, country, product_name, price) :
 		req_url = sign_url(
 			url_domain = str('http://{0}.shoppingapis.kelkoo.com' +
 				'/V3/productSearch?query={1}&' +
-				'sort=default_ranking&start=1&results=20&price_min={2}&show_products=1&show_subcategories=1&show_refinements=1&' +
-				'aid={3}').format(
+				'sort=default_ranking&start=1&results=20&price_min={2}&price_max={3}&show_products=1&show_subcategories=1&show_refinements=1&' +
+				'aid={4}').format(
 					country.lower(),
 					url_encode(product_name),
-					str(int(float(price) * 0.50)),
+					str(int(float(price) * 0.75)),
+					str(int(float(price) * 1.15)),
 					api_keys['id']
 				),
 			key = api_keys['key']

@@ -20,6 +20,7 @@ def iterate_and_fetch_products(products, amazon, country) :
 			try : 
 				amazon_res = search_for_product(product['name'], amazon, product['price'])
 			except Exception as e :
+				print "There was an error with fetching product data from eBay: ", str(e)
 				continue
 			for result in amazon_res :
 				found_products.append([
