@@ -20,7 +20,8 @@ def search_for_offer(api_key, country, product_name, price) :
 				"itemFilter(1).name=SellerBusinessType&itemFilter(1).value=Business&" +
 				"itemFilter(2).name=TopRatedSellerOnly&itemFilter(2).value=true&" +
 				"itemFilter(3).name=HideDuplicateItems&itemFilter(3).value=true&" +
-				"itemFilter(4).name=MinPrice&itemFilter(4).value={2}"
+				"itemFilter(4).name=MinPrice&itemFilter(4).value={2}&" +
+				"outputSelector=SellerInfo"
 		).format(
 			api_key['APPNAME'],
 			url_encode(product_name),

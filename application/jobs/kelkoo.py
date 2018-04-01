@@ -12,6 +12,7 @@ def iterate_and_fetch_offers(products, country) :
 		try : 
 				kelkoo_res = search_for_k_offer(kelkoo_keys, country, product['name'], product['price'])
 		except Exception as e :
+			print "There was an error with fetching offer data from Kelkoo: ", str(e)
 			continue
 		finally :
 			for result in kelkoo_res :
