@@ -12,7 +12,7 @@ def error_handler(err):
 		return True
 
 def get_amazon_object(region) :
-	ama_keys = json.load(open('application/config/api_keys.json'))['amazon']
+	ama_keys = json.load(open('application/config/api_keys.json'))['amazon'][region]
 	return bottlenose.Amazon(
 		ama_keys['access_key'], ama_keys['secret_key'], ama_keys['associate_tag'],
 		Region=region, ErrorHandler=error_handler, MaxQPS=0.9,

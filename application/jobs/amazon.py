@@ -20,7 +20,7 @@ def iterate_and_fetch_products(products, amazon, country) :
 			try : 
 				amazon_res = search_for_product(product['name'], amazon, product['price'])
 			except Exception as e :
-				print "There was an error with fetching product data from eBay: ", str(e)
+				print "There was an error with fetching product data from Amazon: ", str(e)
 				continue
 			for result in amazon_res :
 				found_products.append([
@@ -69,21 +69,25 @@ def ama_batch_fetcher(products, amazon, exchange_rate) :
 
 def iterate_and_fetch_offers(products, amazon, country) :
 	found_offers = []
+	offer_unique_cash = {}
 	exchange_rate = fetch_exchange_rate(country)
 	offer_data = ama_batch_fetcher(products, amazon, exchange_rate)
 	try :
 		for i, product in enumerate(products) :
-			found_offers.append([
-				product['product_id'],
-				'amazon_' + country,
-				product['product_name'],
-				offer_data[i]['merchant_name'],
-				country,
-				offer_data[i]['price'],
-				None,
-				None,
-				product['offer_url']
-			])
+			unique_str = str(product['product_id']) + str(offer_data[i]['merchant_name']) + product['product_name']
+			if unique_str not in offer_unique_cash.itervalues() :		
+				found_offers.append([
+					product['product_id'],
+					'amazon_' + country,
+					product['product_name'],
+					offer_data[i]['merchant_name'],
+					country,
+					offer_data[i]['price'],
+					None,
+					None,
+					product['offer_url']
+				])
+			offer_unique_cash[unique_str] = unique_str	
 		write_offers(found_offers)
 	except Exception as e :
 		print("There was an error: ", e)
@@ -94,6 +98,6 @@ def sync_amazon_products(country) :
 	iterate_and_fetch_products(products_for_sync, amazon, country)
 
 def sync_amazon_offers(country) :
-	products_for_sync = fetch_amazon_products()
+	products_for_sync = fetch_amazon_products(country)
 	amazon = get_amazon_object(country)
 	iterate_and_fetch_offers(products_for_sync, amazon, country)

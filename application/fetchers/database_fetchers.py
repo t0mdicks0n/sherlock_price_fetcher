@@ -58,7 +58,7 @@ def fetch_products_without_amazon (country) :
 	finally :
 		return rows
 
-def fetch_amazon_products () :
+def fetch_amazon_products (country) :
 	psql = Database()
 	cur, cur_dict, connection, psycopg2 = psql.get_connection()
 	try :
@@ -71,8 +71,9 @@ def fetch_amazon_products () :
 				offer_url
 			FROM amazon
 			WHERE asin_id IS NOT NULL
-			LIMIT 100
-		""")
+			AND amazon_country = %s
+			LIMIT 1000
+		""", (country,))
 		rows = cur_dict.fetchall()
 	except Exception as e :
 		print("There was an error: ", e)
@@ -109,7 +110,7 @@ def fetch_products_without_kelkoo(country) :
 				price::float / (SELECT to_sek FROM currency WHERE country = %s) AS price
 			FROM products
 			WHERE price > 0
-			LIMIT 100
+			LIMIT 200
 		""", (country,))
 		rows = cur_dict.fetchall()
 	except Exception as e :
