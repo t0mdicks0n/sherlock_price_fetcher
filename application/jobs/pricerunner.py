@@ -71,11 +71,11 @@ def iterate_and_fetch_offers(products) :
 	except Exception as e :
 		print("There was an error: ", e)
 
-def sync_product_links() :
+def sync_product_links(country) :
 	products_for_sync = fetch_products_without_pricerunner()
 	threaded_execution(products_for_sync, iterate_and_fetch_products, user_define_job=True)
 
-def sync_pricerunner_offers () :
+def sync_pricerunner_offers(country) :
 	products_for_sync = fetch_pricerunner_products()
 	threaded_execution(products_for_sync, iterate_and_fetch_offers, user_define_job=True)
 

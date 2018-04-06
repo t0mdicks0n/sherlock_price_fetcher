@@ -31,14 +31,17 @@ def iterate_and_fetch_offers(products, country) :
 		finally :
 			# best_match = get_highest_match_id(kelkoo_res, product['name'])
 			for result in kelkoo_res :
+
+				# print json.dumps(result, indent=2)
+				
 				# Making sure all found offers are unique
-				unique_str = str(product['id']) + result['Offer']['Title'] + result['Offer']['Merchant']['Name']
+				unique_str = str(product['id']) + result['Offer']['Title'] + result['Offer']['Merchant']['@id']
 				if unique_str not in offer_unique_cash.itervalues() :
 					found_offers.append([
 						product['id'],
 						'kelkoo_' + country,
 						result['Offer']['Title'],
-						result['Offer']['Merchant']['Name'],
+						result['Offer']['Merchant'].get('Name') or None,
 						country,
 						float(result['Offer']['Price']['Price']) * float(exchange_rate['rate']),
 						None,
