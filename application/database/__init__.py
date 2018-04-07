@@ -6,15 +6,15 @@ import os
 
 class Database :
 	def __init__(self) :
-		if 'POSTGRES_CONNECTION' in os.environ :
+		if 'POSTGRES_USER' in os.environ :
 			try :
 				connection = psycopg2.connect(
 					dbname = os.environ['POSTGRES_DBNAME'],
 					user = os.environ['POSTGRES_USER'],
 					password = os.environ['POSTGRES_PASSWORD'],
-					host=os.environ['POSTGRES_HOST'],
+					host = os.environ['POSTGRES_HOST'],
 					sslmode = "disable",
-					application_name='Sherlock'
+					application_name = 'Sherlock'
 				)
 			except psycopg2.OperationalError as e:
 				print('Unable to connect to the Panprices Database!\n{0}').format(e)

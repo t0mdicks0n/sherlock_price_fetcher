@@ -2,6 +2,7 @@ psycopg2
 pprint
 schedule
 python-dateutil
+xmltodict
 requests
 bottlenose
 schedule
