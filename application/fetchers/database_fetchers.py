@@ -1,6 +1,6 @@
 from database import Database
 
-def fetch_products_without_pricerunner () :
+def fetch_products_without_pricerunner (country) :
 	psql = Database()
 	cur, cur_dict, connection, psycopg2 = psql.get_connection()
 	try :
@@ -9,17 +9,21 @@ def fetch_products_without_pricerunner () :
 				A.name,
 				A.id
 			FROM products A
-			LEFT JOIN pricerunner B
+			LEFT JOIN (
+				SELECT *
+				FROM pricerunner
+				WHERE country = %s
+			) B
 			ON A.id = B.product_id
 			WHERE B.product_id IS NULL
-		""")
+		""", (country,))
 		rows = cur_dict.fetchall()
 	except Exception as e :
 		print("There was an error: ", e)
 	finally :
 		return rows
 
-def fetch_pricerunner_products () :
+def fetch_pricerunner_products (country) :
 	psql = Database()
 	cur, cur_dict, connection, psycopg2 = psql.get_connection()
 	try :
@@ -29,7 +33,8 @@ def fetch_pricerunner_products () :
 				url
 			FROM pricerunner
 			WHERE URL IS NOT NULL
-		""")
+			AND country = %s
+		""", (country,))
 		rows = cur_dict.fetchall()
 	except Exception as e :
 		print("There was an error: ", e)
@@ -91,7 +96,6 @@ def fetch_products_without_ebay (country) :
 				price::float / (SELECT to_sek FROM currency WHERE country = %s) AS price
 			FROM products
 			WHERE price > 0
-			LIMIT 100
 		""", (country,))
 		rows = cur_dict.fetchall()
 	except Exception as e :
@@ -110,7 +114,6 @@ def fetch_products_without_kelkoo(country) :
 				price::float / (SELECT to_sek FROM currency WHERE country = %s) AS price
 			FROM products
 			WHERE price > 0
-			LIMIT 200
 		""", (country,))
 		rows = cur_dict.fetchall()
 	except Exception as e :

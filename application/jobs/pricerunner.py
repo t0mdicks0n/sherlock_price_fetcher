@@ -8,37 +8,52 @@ from dumpers import write_pricerunner
 from dumpers import write_offers
 import pprint
 
-def iterate_and_fetch_products(products) :
+def iterate_and_fetch_products(products, country) :
 	found_products = []
 	try :
 		for i, product in enumerate(products) :
 			try : 
-				pricerunner_res = fetch_product_id(product['name'])
+				pricerunner_res = fetch_product_id(product['name'], country)
 			except Exception as e :
 				print "There was an error with fetching product data from Pricerunner: ", str(e)
 				continue		
 			if len(pricerunner_res['products']) >= 1 :
 				products[i]['url'] = pricerunner_res['products'][0].get('url') or None
 				products[i]['lowest_price'] = pricerunner_res['products'][0].get('lowestPrice') or None
-				found_products.append([products[i]['id'], products[i]['url'], products[i]['lowest_price']])
+				found_products.append([
+					country,
+					products[i]['id'],
+					products[i]['url'],
+					products[i]['lowest_price']
+				])
 			elif len(pricerunner_res['suggestions']) >= 1 :
 				products[i]['url'] = pricerunner_res['suggestions'][0].get('url') or None
 				products[i]['lowest_price'] = pricerunner_res['suggestions'][0].get('lowestPrice') or None				
-				found_products.append([products[i]['id'], products[i]['url'], products[i]['lowest_price']])
+				found_products.append([
+					country,
+					products[i]['id'],
+					products[i]['url'],
+					products[i]['lowest_price']
+				])
 			else :
-				found_products.append([products[i]['id'], None, None])
+				found_products.append([
+					country,
+					products[i]['id'],
+					None,
+					None
+				])
 		del products
 		# Write products to database
 		write_pricerunner(found_products)
 	except Exception as e :
 		print("There was an error: ", e)
 
-def iterate_and_fetch_offers(products) :
+def iterate_and_fetch_offers(products, country) :
 	found_offers = []
 	try :
 		for i, product in enumerate(products) :
 			try : 
-				pricerunner_res = fetch_product_offers(product['url'])
+				pricerunner_res = fetch_product_offers(product['url'], country)
 			except Exception as e :
 				print "There was an error with fetching offer data from Pricerunner: ", str(e)
 				continue
@@ -53,10 +68,10 @@ def iterate_and_fetch_offers(products) :
 							if offer['_info']['stockInfo'].get('link', None) is not None :
 								found_offers.append([
 									products[i]['product_id'],
-									'pricerunner',
+									'pricerunner_' + country,
 									offer['retailerProductName'],
 									offer['retailer']['name'],
-									offer.get('country') or None,
+									country,
 									int(offer['priceEx']['value'].split('.')[0]),
 									int(offer['shippingCostFixEx'].split('.')[0]),
 									True,
@@ -72,10 +87,10 @@ def iterate_and_fetch_offers(products) :
 		print("There was an error: ", e)
 
 def sync_product_links(country) :
-	products_for_sync = fetch_products_without_pricerunner()
-	threaded_execution(products_for_sync, iterate_and_fetch_products, user_define_job=True)
+	products_for_sync = fetch_products_without_pricerunner(country)
+	threaded_execution(products_for_sync, iterate_and_fetch_products, user_define_job=True, country=country)
 
 def sync_pricerunner_offers(country) :
-	products_for_sync = fetch_pricerunner_products()
-	threaded_execution(products_for_sync, iterate_and_fetch_offers, user_define_job=True)
+	products_for_sync = fetch_pricerunner_products(country)
+	threaded_execution(products_for_sync, iterate_and_fetch_offers, user_define_job=True, country=country)
 

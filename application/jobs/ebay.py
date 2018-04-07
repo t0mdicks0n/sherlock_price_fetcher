@@ -2,6 +2,7 @@ from fetchers import search_for_e_offer
 from fetchers import fetch_products_without_ebay
 from fetchers import fetch_exchange_rate
 from dumpers import write_offers
+from helpers import threaded_execution
 import json
 
 def iterate_and_fetch_offers(products, ebay_keys, country) :
@@ -36,4 +37,5 @@ def iterate_and_fetch_offers(products, ebay_keys, country) :
 def sync_ebay_offers(country) :
 	products_for_sync = fetch_products_without_ebay(country)
 	ebay_keys = json.load(open('application/config/api_keys.json'))['ebay']
-	iterate_and_fetch_offers(products_for_sync, ebay_keys, country)
+	# iterate_and_fetch_offers(products_for_sync, ebay_keys, country)
+	threaded_execution(products_for_sync, iterate_and_fetch_offers, user_define_job=True, country=country, ebay_keys=ebay_keys)

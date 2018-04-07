@@ -4,6 +4,7 @@ from fetchers import fetch_products_without_kelkoo
 from fetchers import search_for_k_offer
 from fetchers import fetch_exchange_rate
 from dumpers import write_offers
+from helpers import threaded_execution
 
 # Does not work that well
 # Try out the other library if time: https://stackoverflow.com/questions/6690739/fuzzy-string-comparison-in-python-confused-with-which-library-to-use
@@ -31,11 +32,10 @@ def iterate_and_fetch_offers(products, country) :
 		finally :
 			# best_match = get_highest_match_id(kelkoo_res, product['name'])
 			for result in kelkoo_res :
-
+				# Making sure all found offers are unique
+				unique_str = str(product['id']) + result['Offer']['Title'] + result['Offer']['Merchant']['@id'] + result['Offer']['@id'] + result['Offer']['Url']
 				# print json.dumps(result, indent=2)
 				
-				# Making sure all found offers are unique
-				unique_str = str(product['id']) + result['Offer']['Title'] + result['Offer']['Merchant']['@id']
 				if unique_str not in offer_unique_cash.itervalues() :
 					found_offers.append([
 						product['id'],
@@ -53,4 +53,6 @@ def iterate_and_fetch_offers(products, country) :
 
 def sync_kelkoo_offers(country) :
 	products_for_sync = fetch_products_without_kelkoo(country)
-	iterate_and_fetch_offers(products_for_sync, country)
+	# iterate_and_fetch_offers(products_for_sync, country)
+	threaded_execution(products_for_sync, iterate_and_fetch_offers, user_define_job=True, country=country)
+

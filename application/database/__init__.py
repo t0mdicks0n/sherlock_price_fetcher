@@ -6,7 +6,22 @@ import os
 
 class Database :
 	def __init__(self) :
-		if 'DOCKER' in os.environ :
+		if 'POSTGRES_CONNECTION' in os.environ :
+			try :
+				connection = psycopg2.connect(
+					dbname = os.environ['POSTGRES_DBNAME'],
+					user = os.environ['POSTGRES_USER'],
+					password = os.environ['POSTGRES_PASSWORD'],
+					sslmode = "disable",
+					application_name='Sherlock',
+					host='127.0.0.1'
+				)
+			except psycopg2.OperationalError as e:
+				print('Unable to connect to the Panprices Database!\n{0}').format(e)
+			finally :
+				cur = connection.cursor()
+				cur_dict = connection.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
+		elif 'DOCKER' in os.environ :
 			try :
 				connection = psycopg2.connect(
 					dbname = "postgres",
@@ -22,8 +37,9 @@ class Database :
 				)
 			except psycopg2.OperationalError as e:
 				print('Unable to connect to the GCE Invoice DB!\n{0}').format(e)
-			cur = connection.cursor()
-			cur_dict = connection.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
+			finally :
+				cur = connection.cursor()
+				cur_dict = connection.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
 		else :
 			try :
 				connection = psycopg2.connect(
@@ -40,8 +56,9 @@ class Database :
 				)
 			except psycopg2.OperationalError as e:
 				print('Unable to connect to the Panprices Database!\n{0}').format(e)
-			cur = connection.cursor()
-			cur_dict = connection.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
+			finally :
+				cur = connection.cursor()
+				cur_dict = connection.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
 
 		self.cur = cur
 		self.cur_dict = cur_dict
