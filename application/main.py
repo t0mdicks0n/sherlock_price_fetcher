@@ -50,8 +50,6 @@ if __name__ == '__main__' :
 
 	# schedule.every().day.at("00:00").do(ulog_pre_process)
 	# schedule.every().day.at("03:00").do(invoice_data_write)
-	
-	kelkoo()
 
 	schedule.every(2).minutes.do(kelkoo)
 
