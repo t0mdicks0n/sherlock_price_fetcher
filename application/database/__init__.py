@@ -12,9 +12,9 @@ class Database :
 					dbname = os.environ['POSTGRES_DBNAME'],
 					user = os.environ['POSTGRES_USER'],
 					password = os.environ['POSTGRES_PASSWORD'],
+					host=os.environ['POSTGRES_HOST'],
 					sslmode = "disable",
-					application_name='Sherlock',
-					host='127.0.0.1'
+					application_name='Sherlock'
 				)
 			except psycopg2.OperationalError as e:
 				print('Unable to connect to the Panprices Database!\n{0}').format(e)
