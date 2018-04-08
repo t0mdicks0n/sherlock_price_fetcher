@@ -18,5 +18,6 @@ def write_pricerunner (product_data) :
 			) VALUES 
 		""" + args_str) 
 		connection.commit()
+		psql.close_connection()
 	except Exception as e :
 		print("There was an error when writing pricerunner data to DB: ", e)

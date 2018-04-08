@@ -26,5 +26,6 @@ def write_offers(offers_data) :
 				= (EXCLUDED.price, EXCLUDED.shipping_cost)
 		""") 
 		connection.commit()
+		psql.close_connection()
 	except Exception as e :
 		print("There was an error when writing offers data to DB: ", e)

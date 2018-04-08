@@ -4,3 +4,4 @@ from amazon import sync_amazon_products
 from amazon import sync_amazon_offers
 from ebay import sync_ebay_offers
 from kelkoo import sync_kelkoo_offers
+from db_maintenance import offers_wipe

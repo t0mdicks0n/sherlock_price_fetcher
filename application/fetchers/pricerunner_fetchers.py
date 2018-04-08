@@ -71,6 +71,5 @@ def fetch_product_offers(product_url, country, retries=10) :
 		print "There was an error with getting product offers for " + product_url + " on Pricerunner: " + str(e)
 		raise e
 	finally :
-		print request.json()
 		res = request.json()['product']['offers']
 		return res

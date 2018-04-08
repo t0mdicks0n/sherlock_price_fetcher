@@ -4,11 +4,15 @@ from jobs import sync_amazon_products
 from jobs import sync_amazon_offers
 from jobs import sync_ebay_offers
 from jobs import sync_kelkoo_offers
+from jobs import sync_kelkoo_offers
+from jobs import offers_wipe
 
 import schedule
 import time
+import datetime
 
 def pricerunner() :
+	print(str(datetime.datetime.now()) + ": Starting Pricerunner.")
 	sync_pricerunner_products('SE')
 	sync_pricerunner_offers('SE')
 	sync_pricerunner_products('DK')
@@ -16,8 +20,10 @@ def pricerunner() :
 	# ----Fucked up result from the API 
 	# sync_pricerunner_products('UK')
 	# sync_pricerunner_offers('UK')
+	print(str(datetime.datetime.now()) + ": Finished Pricerunner.")
 
 def amazon() :
+	print(str(datetime.datetime.now()) + ": Starting Amazon.")
 	sync_amazon_products('UK')
 	sync_amazon_offers('UK')
 	sync_amazon_products('DE')
@@ -26,8 +32,10 @@ def amazon() :
 	sync_amazon_offers('IT')
 	sync_amazon_products('ES')
 	sync_amazon_offers('ES')
+	print(str(datetime.datetime.now()) + ": Finished Amazon.")
 	
 def ebay () :
+	print(str(datetime.datetime.now()) + ": Starting eBay.")
 	sync_ebay_offers('UK')
 	sync_ebay_offers('DE')
 	sync_ebay_offers('FR')
@@ -35,23 +43,39 @@ def ebay () :
 	# ----These does not work for some reason:
 	# sync_ebay_offers('NL')
 	# sync_ebay_offers('ES')
+	print(str(datetime.datetime.now()) + ": Finished eBay.")
 
 def kelkoo () :
+	print(str(datetime.datetime.now()) + ": Starting Kelkoo.")
 	sync_kelkoo_offers('UK')
 	sync_kelkoo_offers('DE')
-	# sync_kelkoo_offers('SE')
-	# sync_kelkoo_offers('FR')
-	# sync_kelkoo_offers('NL')
-	# sync_kelkoo_offers('DK')
-	# sync_kelkoo_offers('FI')
+	sync_kelkoo_offers('SE')
+	sync_kelkoo_offers('FR')
+	sync_kelkoo_offers('NL')
+	sync_kelkoo_offers('DK')
+	sync_kelkoo_offers('FI')
+	print(str(datetime.datetime.now()) + ": Finished Kelkoo.")
+
+def wipe_offers_db () :
+	print(str(datetime.datetime.now()) + ": Deleting offers data and supporting tables.")
+	offers_wipe()
+	print(str(datetime.datetime.now()) + ": Finished deleting offers data and supporting tables.")
 
 if __name__ == '__main__' :
-	print("Running the scheduler.")
+	print(str(datetime.datetime.now()) + ": Sherlock launched successfully.")
+	print(str(datetime.datetime.now()) + ": Now running the scheduler.")
 
 	# schedule.every().day.at("00:00").do(ulog_pre_process)
 	# schedule.every().day.at("03:00").do(invoice_data_write)
+	# schedule.every().hour.do(job, param1, param2)
 
-	schedule.every(2).minutes.do(kelkoo)
+	# schedule.every(2).minutes.do(kelkoo)
+
+	schedule.every().day.at("03:00").do(amazon)
+	schedule.every().day.at("03:00").do(pricerunner)
+	schedule.every().day.at("03:00").do(ebay)
+	schedule.every().day.at("03:00").do(kelkoo)
+	# schedule.every().sunday.at("01:15").do(wipe_offers_db)
 
 	while True:
 		schedule.run_pending()

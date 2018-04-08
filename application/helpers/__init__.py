@@ -2,3 +2,4 @@ from threading_helpers import threaded_execution
 from iter_file import IteratorFile
 from amazon_api import get_amazon_object
 from normalize_price import amazon_value_to_sek
+from clear_db import delete_offers

@@ -21,6 +21,7 @@ def fetch_products_without_pricerunner (country) :
 	except Exception as e :
 		print("There was an error: ", e)
 	finally :
+		psql.close_connection()
 		return rows
 
 def fetch_pricerunner_products (country) :
@@ -39,6 +40,7 @@ def fetch_pricerunner_products (country) :
 	except Exception as e :
 		print("There was an error: ", e)
 	finally :
+		psql.close_connection()
 		return rows
 
 def fetch_products_without_amazon (country) :
@@ -51,16 +53,20 @@ def fetch_products_without_amazon (country) :
 				A.id,
 				A.price::float / (SELECT to_sek FROM currency WHERE country = %s) AS price
 			FROM products A
-			LEFT JOIN amazon B
+			LEFT JOIN (
+				SELECT *
+				FROM amazon
+				WHERE amazon_country = %s
+			) B
 			ON A.id = B.product_id
 			WHERE B.product_id IS NULL
 			AND price > 0
-			LIMIT 100
-		""", (country,))
+		""", (country, country))
 		rows = cur_dict.fetchall()
 	except Exception as e :
 		print("There was an error: ", e)
 	finally :
+		psql.close_connection()
 		return rows
 
 def fetch_amazon_products (country) :
@@ -77,12 +83,12 @@ def fetch_amazon_products (country) :
 			FROM amazon
 			WHERE asin_id IS NOT NULL
 			AND amazon_country = %s
-			LIMIT 1000
 		""", (country,))
 		rows = cur_dict.fetchall()
 	except Exception as e :
 		print("There was an error: ", e)
 	finally :
+		psql.close_connection()
 		return rows
 
 def fetch_products_without_ebay (country) :
@@ -101,6 +107,7 @@ def fetch_products_without_ebay (country) :
 	except Exception as e :
 		print("There was an error: ", e)
 	finally :
+		psql.close_connection()
 		return rows
 
 def fetch_products_without_kelkoo(country) :
@@ -119,4 +126,5 @@ def fetch_products_without_kelkoo(country) :
 	except Exception as e :
 		print("There was an error: ", e)
 	finally :
+		psql.close_connection()
 		return rows	
