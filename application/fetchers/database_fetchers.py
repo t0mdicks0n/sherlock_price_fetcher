@@ -128,3 +128,4 @@ def fetch_products_without_kelkoo(country) :
 	finally :
 		psql.close_connection()
 		return rows	
+

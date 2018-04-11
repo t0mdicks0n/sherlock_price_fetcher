@@ -7,6 +7,9 @@ from jobs import sync_kelkoo_offers
 from jobs import sync_kelkoo_offers
 from jobs import offers_wipe
 
+from jobs import sync_prisjakt_products
+
+
 import schedule
 import time
 import datetime
@@ -70,6 +73,9 @@ if __name__ == '__main__' :
 	# schedule.every().hour.do(job, param1, param2)
 
 	# schedule.every(2).minutes.do(kelkoo)
+
+	sync_prisjakt_products()
+	
 
 	schedule.every().day.at("03:00").do(amazon)
 	schedule.every().day.at("03:00").do(pricerunner)

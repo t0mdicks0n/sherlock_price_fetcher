@@ -11,3 +11,4 @@ from amazon_fetchers import search_for_offer
 from currency_fetchers import fetch_exchange_rate
 from ebay_fetchers import search_for_offer as search_for_e_offer
 from kelkoo_fetchers import search_for_offer as search_for_k_offer
+from prisjakt_fetchers import get_products
