@@ -129,3 +129,50 @@ def fetch_products_without_kelkoo(country) :
 		psql.close_connection()
 		return rows	
 
+def fetch_products_without_prisjakt(country) :
+	psql = Database()
+	cur, cur_dict, connection, psycopg2 = psql.get_connection()
+	try :
+		cur_dict.execute("""
+			SELECT
+				A.name,
+				A.id
+			FROM products A
+			LEFT JOIN (
+				SELECT *
+				FROM prisjakt
+				WHERE prisjakt_market = %s
+			) B
+			ON A.id = B.product_id
+			WHERE B.product_id IS NULL
+		""", (country,))
+		rows = cur_dict.fetchall()
+	except Exception as e :
+		print("There was an error: ", e)
+	finally :
+		psql.close_connection()
+		# Instead of data [{'name': 'MyPhone 1082', 'id': 1717}, {'name': 'MyPhone 1062 Talk+', 'id': 1718}]
+		# I need {'MyPhone 1082': 1717, 'MyPhone 1062 Talk+': 1718}
+		row_dict = {}
+		for row in rows :
+			row_dict[row['name']] = row['id']
+		return row_dict
+
+def fetch_prisjakt_products(country) :
+	psql = Database()
+	cur, cur_dict, connection, psycopg2 = psql.get_connection()
+	try :
+		cur_dict.execute("""
+			SELECT
+				product_id,
+				url
+			FROM prisjakt
+			WHERE URL IS NOT NULL
+			AND prisjakt_market = %s
+		""", (country,))
+		rows = cur_dict.fetchall()
+	except Exception as e :
+		print("There was an error: ", e)
+	finally :
+		psql.close_connection()
+		return rows

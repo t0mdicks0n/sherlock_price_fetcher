@@ -1,3 +1,4 @@
+# coding: utf8
 from jobs import sync_product_links as sync_pricerunner_products
 from jobs import sync_pricerunner_offers
 from jobs import sync_amazon_products
@@ -7,7 +8,9 @@ from jobs import sync_kelkoo_offers
 from jobs import sync_kelkoo_offers
 from jobs import offers_wipe
 
+from jobs import sync_products
 from jobs import sync_prisjakt_products
+from jobs import sync_prisjakt_offers
 
 
 import schedule
@@ -59,6 +62,13 @@ def kelkoo () :
 	sync_kelkoo_offers('FI')
 	print(str(datetime.datetime.now()) + ": Finished Kelkoo.")
 
+def prisjakt () :
+	print(str(datetime.datetime.now()) + ": Starting Prisjakt.")
+	sync_products("smartphones")
+	sync_prisjakt_products('SE')
+	sync_prisjakt_offers('SE')
+	print(str(datetime.datetime.now()) + ": Finished Prisjakt.")
+
 def wipe_offers_db () :
 	print(str(datetime.datetime.now()) + ": Deleting offers data and supporting tables.")
 	offers_wipe()
@@ -68,13 +78,9 @@ if __name__ == '__main__' :
 	print(str(datetime.datetime.now()) + ": Sherlock launched successfully.")
 	print(str(datetime.datetime.now()) + ": Now running the scheduler.")
 
-	# schedule.every().day.at("00:00").do(ulog_pre_process)
-	# schedule.every().day.at("03:00").do(invoice_data_write)
+
 	# schedule.every().hour.do(job, param1, param2)
-
-	# schedule.every(2).minutes.do(kelkoo)
-
-	sync_prisjakt_products("smartphones")
+	schedule.every(2).minutes.do(prisjakt)
 	
 
 	schedule.every().day.at("03:00").do(amazon)

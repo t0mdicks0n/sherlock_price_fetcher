@@ -6,3 +6,4 @@ xmltodict
 requests
 bottlenose
 schedule
+bs4
