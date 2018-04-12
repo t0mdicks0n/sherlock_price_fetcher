@@ -1,3 +1,4 @@
 from pricerunner_dumpers import write_pricerunner
 from amazon_dumpers import write_amazon
 from offers_dumpers import write_offers
+from product_dumpers import write_products

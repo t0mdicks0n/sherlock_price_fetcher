@@ -16,7 +16,7 @@ def scrape_prod_site(prod_count) :
 		soup = BeautifulSoup(page.content, 'html.parser')
 		return soup.select("#prodlista #div_produktlista .drg-sidebar")
 
-def get_products(products=[], prod_count=0) :
+def get_products(category, products=[], prod_count=0) :
 	print "prod_count", str(prod_count)
 	fetched_products = scrape_prod_site(prod_count)
 	if len(fetched_products) == 0 :
@@ -25,4 +25,4 @@ def get_products(products=[], prod_count=0) :
 	else :
 		new_products = products + fetched_products
 		prod_count = prod_count + len(fetched_products)
-		return get_products(new_products, prod_count)
+		return get_products(category, new_products, prod_count)

@@ -74,7 +74,7 @@ if __name__ == '__main__' :
 
 	# schedule.every(2).minutes.do(kelkoo)
 
-	sync_prisjakt_products()
+	sync_prisjakt_products("smartphones")
 	
 
 	schedule.every().day.at("03:00").do(amazon)
