@@ -78,15 +78,14 @@ if __name__ == '__main__' :
 	print(str(datetime.datetime.now()) + ": Sherlock launched successfully.")
 	print(str(datetime.datetime.now()) + ": Now running the scheduler.")
 
-
 	# schedule.every().hour.do(job, param1, param2)
-	schedule.every(2).minutes.do(prisjakt)
-	
+	# schedule.every(2).minutes.do(prisjakt)	
 
-	schedule.every().day.at("03:00").do(amazon)
-	schedule.every().day.at("03:00").do(pricerunner)
-	schedule.every().day.at("03:00").do(ebay)
-	schedule.every().day.at("03:00").do(kelkoo)
+	schedule.every().day.at("01:00").do(amazon)
+	schedule.every().day.at("01:00").do(pricerunner)
+	schedule.every().day.at("01:00").do(ebay)
+	schedule.every().day.at("01:00").do(kelkoo)
+	schedule.every().day.at("01:00").do(prisjakt)
 	# schedule.every().sunday.at("01:15").do(wipe_offers_db)
 
 	while True:
