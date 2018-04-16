@@ -24,7 +24,7 @@ def sync_products(category) :
 			found_products.append([
 				product.select(".product-name a")[0].get_text(),
 				category,
-				product.select("img")[0].attrs["src"],
+				product.select("a img")[0].attrs["src"],
 				price			
 			])
 	write_products(found_products)

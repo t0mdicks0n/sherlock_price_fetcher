@@ -7,11 +7,9 @@ from jobs import sync_ebay_offers
 from jobs import sync_kelkoo_offers
 from jobs import sync_kelkoo_offers
 from jobs import offers_wipe
-
 from jobs import sync_products
 from jobs import sync_prisjakt_products
 from jobs import sync_prisjakt_offers
-
 
 import schedule
 import time
