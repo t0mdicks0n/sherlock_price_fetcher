@@ -22,8 +22,8 @@ def write_offers(offers_data) :
 		""" + args_str + """
 			ON CONFLICT (product_id, offer_source, retailer_name, retail_prod_name)
 			DO UPDATE SET
-				(price, shipping_cost)
-				= (EXCLUDED.price, EXCLUDED.shipping_cost)
+				(price, shipping_cost, offer_url)
+				= (EXCLUDED.price, EXCLUDED.shipping_cost, EXCLUDED.offer_url)
 		""") 
 		connection.commit()
 		psql.close_connection()

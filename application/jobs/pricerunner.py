@@ -75,7 +75,7 @@ def iterate_and_fetch_offers(products, country) :
 									int(offer['priceEx']['value'].split('.')[0]),
 									int(offer['shippingCostFixEx'].split('.')[0]),
 									True,
-									'https://www.pricerunner.se' + offer['_info']['stockInfo']['link']['href']
+									'https://www.pricerunner.' + country.lower() + offer['_info']['stockInfo']['link']['href']
 								])
 					num_to_fetch -= 1
 				except IndexError :

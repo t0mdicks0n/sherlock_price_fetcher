@@ -77,7 +77,7 @@ if __name__ == '__main__' :
 	print(str(datetime.datetime.now()) + ": Now running the scheduler.")
 
 	# schedule.every().hour.do(job, param1, param2)
-	# schedule.every(2).minutes.do(prisjakt)	
+	schedule.every(2).minutes.do(pricerunner)
 
 	schedule.every().day.at("01:00").do(amazon)
 	schedule.every().day.at("01:00").do(pricerunner)
