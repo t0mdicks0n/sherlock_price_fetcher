@@ -42,4 +42,8 @@ def fetch_prisjakt_product_offers(url, country) :
 		print("There was an error when scraping a offer site from Prisjakt: ", e)
 	finally :
 		soup = BeautifulSoup(page.content, 'html.parser')
-		return soup.select("#tabcontentdiv #prislista .v-centered")
+		return soup.select(".v-centered")
+
+		# return soup.find_all('tr', class_='v-centered')
+
+

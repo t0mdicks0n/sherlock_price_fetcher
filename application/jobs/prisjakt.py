@@ -57,44 +57,46 @@ def iterate_and_fetch_offers(products, country) :
 		try :
 			prisjakt_res = fetch_prisjakt_product_offers(product['url'], country)
 		except Exception as e :
-			print "There was an error with fetching offer data from Pricerunner: ", str(e)
+			print "There was an error with fetching offer data from Prisjakt: ", str(e)
 			continue
 		finally :
 			# Maximum number of offers from the result that I want to store
-			num_to_fetch = 10
+			num_to_fetch = 30
 			while num_to_fetch > 0 :
 				try : 
-					offer = prisjakt_res[10 - num_to_fetch]
-					# Define empty variables
-					retail_prod_name = ""
-					retailer_name = ""
-					price = None
-					offer_url = ""
-					# Do logical checks to see if the data exists
-					if len(offer.select(".detailed2 a")) > 0 :
-						retail_prod_name = offer.select(".detailed2 a")[0].get_text()
-					if len(offer.select(".store-name-span")) > 0 :
-						retailer_name = offer.select(".store-name-span")[0].get_text()
-					if len(offer.select(".cell-bar a")) > 0 :
-						price = int(''.join(re.findall(r'\d+', offer.select(".cell-bar a")[0].get_text())))
-					if len(offer.select(".cell-bar a")) > 0 :
-						offer_url = "https://www.prisjakt.nu" + offer.select(".cell-bar a")[0].attrs["href"]
-					# Only write offers with complete data
-					if retail_prod_name != "" and retailer_name != "" and price != None and offer_url != "" :
-						found_offers.append([
-							products[i]['product_id'],
-							'prisjakt_' + country,
-							retail_prod_name.strip(),
-							retailer_name,
-							country,
-							price,
-							None,
-							None,
-							offer_url
-						])
+					offer = prisjakt_res[30 - num_to_fetch]
+					# Check so that we don't get offers on used products
+					if offer.attrs['data-pris_typ'] == 'normal' :
+						# Define empty variables
+						retail_prod_name = ""
+						retailer_name = ""
+						price = None
+						offer_url = ""
+						# Do logical checks to see if the data exists
+						if len(offer.select(".detailed2")) > 0 :
+							retail_prod_name = offer.select(".detailed2")[0].get_text()
+						if len(offer.select(".store-name-span")) > 0 :
+							retailer_name = offer.select(".store-name-span")[0].get_text()
+						if len(offer.select(".cell-bar a")) > 0 :
+							price = int(''.join(re.findall(r'\d+', offer.select(".cell-bar a")[0].get_text())))
+						if len(offer.select(".cell-bar a")) > 0 :
+							offer_url = "https://www.prisjakt.nu" + offer.select(".cell-bar a")[0].attrs["href"]
+						# Only write offers with complete data
+						if retail_prod_name != "" and retailer_name != "" and price != None and offer_url != "" :
+							found_offers.append([
+								products[i]['product_id'],
+								'prisjakt_' + country,
+								retail_prod_name.strip(),
+								retailer_name,
+								country,
+								price,
+								None,
+								None,
+								offer_url
+							])
 					num_to_fetch -= 1
 				# No more items exists
-				except IndexError :
+				except IndexError as e:
 					num_to_fetch = 0
 	write_offers(found_offers)
 
