@@ -22,3 +22,15 @@ def write_amazon(amazon_data) :
 		psql.close_connection()
 	except Exception as e :
 		print("There was an error when writing amazon data to DB: ", e)
+
+def del_empty_ama_res () :
+	psql = Database()
+	cur, cur_dict, connection, psycopg2 = psql.get_connection()
+	try :
+		cur.execute("""
+			DELETE FROM offers WHERE offer_source LIKE 'amazon%' AND price IS NULL;
+		""")
+		connection.commit()
+		psql.close_connection()
+	except Exception as e :
+		print("There was an error when trying to delete amazon offers with no prices: ", e)

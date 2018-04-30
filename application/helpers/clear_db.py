@@ -8,7 +8,7 @@ def delete_offers() :
 			DELETE FROM pricerunner;
 			DELETE FROM prisjakt;
 			-- Amazon currently takes to much time to fetch products for
-			-- DELETE FROM amazon;
+			DELETE FROM amazon;
 			DELETE FROM offers;
 		""")
 	except Exception as e :

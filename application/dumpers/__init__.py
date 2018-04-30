@@ -1,5 +1,6 @@
 from pricerunner_dumpers import write_pricerunner
 from amazon_dumpers import write_amazon
+from amazon_dumpers import del_empty_ama_res
 from offers_dumpers import write_offers
 from product_dumpers import write_products
 from prisjakt_dumpers import write_prisjakt

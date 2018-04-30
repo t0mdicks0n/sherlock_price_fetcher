@@ -28,7 +28,7 @@ def search_for_offer(api_key, country, product_name, price) :
 			api_key['APPNAME'],
 			country,
 			url_encode(product_name),
-			str(float(price) * 0.50)
+			str(float(price) * 0.75)
 		)
 		res = requests.get(request_string)
 		dict_res = xmltodict.parse(res.content)

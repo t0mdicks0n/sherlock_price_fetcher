@@ -4,6 +4,7 @@ from fetchers import fetch_product_id
 from fetchers import fetch_product_offers
 from helpers import threaded_execution
 from fetchers import fetch_product_id
+from fetchers import fetch_exchange_rate
 from dumpers import write_pricerunner
 from dumpers import write_offers
 import pprint
@@ -50,6 +51,7 @@ def iterate_and_fetch_products(products, country) :
 
 def iterate_and_fetch_offers(products, country) :
 	found_offers = []
+	exchange_rate = fetch_exchange_rate(country)
 	try :
 		for i, product in enumerate(products) :
 			try : 
@@ -58,10 +60,10 @@ def iterate_and_fetch_offers(products, country) :
 				print "There was an error with fetching offer data from Pricerunner: ", str(e)
 				continue
 			# Maximum number of products from the result that I want to store
-			num_to_fetch = 4
+			num_to_fetch = 15
 			while num_to_fetch > 0 :
 				try :
-					offer = pricerunner_res[4 - num_to_fetch]
+					offer = pricerunner_res[15 - num_to_fetch]
 					# Only store items with links to the offers
 					if offer['_info'].get('wlink', None) is not None :
 						if offer['_info'].get('stockInfo', None) is not None :
@@ -72,8 +74,8 @@ def iterate_and_fetch_offers(products, country) :
 									offer['retailerProductName'],
 									offer['retailer']['name'],
 									country,
-									int(offer['priceEx']['value'].split('.')[0]),
-									int(offer['shippingCostFixEx'].split('.')[0]),
+									float(offer['priceEx']['value'].split('.')[0]) * float(exchange_rate['rate']),
+									float(offer['shippingCostFixEx'].split('.')[0]) * float(exchange_rate['rate']),
 									True,
 									'https://www.pricerunner.' + country.lower() + offer['_info']['stockInfo']['link']['href']
 								])

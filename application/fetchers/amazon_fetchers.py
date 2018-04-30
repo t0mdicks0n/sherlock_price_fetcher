@@ -17,7 +17,7 @@ def search_for_product(product_name, amazon, price) :
 	finally :
 		# print json.dumps(response, indent=2, sort_keys=True)
 		# Grab up to 4 responses
-		return response['ItemSearchResponse']['Items']['Item'][:4]
+		return response['ItemSearchResponse']['Items']['Item'][:10]
 
 def search_for_offer(asin, amazon) :
 	try :
@@ -30,5 +30,5 @@ def search_for_offer(asin, amazon) :
 	except Exception as e:
 		print "There was an error when calling the Amazon API: ", e
 	finally :
-		# print json.dumps(response, indent=2, sort_keys=True)
+		# print json.dumps(response['ItemLookupResponse']['Items']['Item'], indent=2, sort_keys=True)
 		return response['ItemLookupResponse']['Items']['Item']

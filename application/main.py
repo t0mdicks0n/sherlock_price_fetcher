@@ -78,8 +78,8 @@ if __name__ == '__main__' :
 
 	# schedule.every().hour.do(job, param1, param2)
 
-	# sync_prisjakt_offers('SE')
-	schedule.every(1).minutes.do(prisjakt)
+	# sync_amazon_offers('UK')
+	# schedule.every(1).minutes.do(amazon)
 
 	schedule.every().day.at("01:00").do(amazon)
 	schedule.every().day.at("01:00").do(pricerunner)
