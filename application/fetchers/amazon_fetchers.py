@@ -10,14 +10,14 @@ def search_for_product(product_name, amazon, price) :
 			SearchIndex="All",
 			Condition="New",
 			# Provide a minimum price for better results
-			MinimumPrice=format_price(price * 0.5)
+			MinimumPrice=format_price(price * 0.75)
 		)
 	except Exception as e:
 		print "There was an error when calling the Amazon API: ", e
 	finally :
 		# print json.dumps(response, indent=2, sort_keys=True)
-		# Grab up to 4 responses
-		return response['ItemSearchResponse']['Items']['Item'][:10]
+		# Grab up to 7 responses
+		return response['ItemSearchResponse']['Items']['Item'][:7]
 
 def search_for_offer(asin, amazon) :
 	try :
