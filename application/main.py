@@ -81,14 +81,14 @@ if __name__ == '__main__' :
 	# sync_amazon_offers('UK')
 	# schedule.every(1).minutes.do(amazon)
 
-	kelkoo()
+	# kelkoo()
 
 	schedule.every().day.at("01:00").do(amazon)
 	schedule.every().day.at("01:00").do(pricerunner)
 	schedule.every().day.at("01:00").do(ebay)
 	schedule.every().day.at("01:00").do(kelkoo)
 	schedule.every().day.at("01:00").do(prisjakt)
-	# schedule.every().sunday.at("01:15").do(wipe_offers_db)
+	schedule.every().day.at("01:00").do(wipe_offers_db)
 
 	while True:
 		schedule.run_pending()
