@@ -33,20 +33,24 @@ def iterate_and_fetch_offers(products, country) :
 			# best_match = get_highest_match_id(kelkoo_res, product['name'])
 			for result in kelkoo_res :
 				# Making sure all found offers are unique
-				unique_str = str(product['id']) + 'kelkoo_' + country + result['Offer']['Merchant'].get('Name') or None + result['Offer']['Title']
-				if unique_str not in offer_unique_cash.itervalues() :
-					found_offers.append([
-						product['id'],
-						'kelkoo_' + country,
-						result['Offer']['Title'],
-						result['Offer']['Merchant'].get('Name') or None,
-						country,
-						float(result['Offer']['Price']['Price']) * float(exchange_rate['rate']),
-						None,
-						None,
-						result['Offer']['Url']
-					])
-				offer_unique_cash[unique_str] = unique_str
+				try :
+					unique_str = str(product.get('id') or 'None') + 'kelkoo_' + country + result['Offer']['Merchant'].get('Name') or 'None' + result['Offer'].get('Title') or 'None'
+					if unique_str not in offer_unique_cash.itervalues() :
+						found_offers.append([
+							product['id'],
+							'kelkoo_' + country,
+							result['Offer']['Title'],
+							result['Offer']['Merchant'].get('Name') or None,
+							country,
+							float(result['Offer']['Price']['Price']) * float(exchange_rate['rate']),
+							None,
+							None,
+							result['Offer']['Url']
+						])
+				except Exception as e :
+					print "There was an error with iterating over some fetched data from Kelkoo: ", str(e)
+				finally :
+					offer_unique_cash[unique_str] = unique_str
 			write_offers(found_offers)
 
 def sync_kelkoo_offers(country) :
