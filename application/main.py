@@ -88,7 +88,7 @@ if __name__ == '__main__' :
 	schedule.every().day.at("01:00").do(ebay)
 	schedule.every().day.at("01:00").do(kelkoo)
 	schedule.every().day.at("01:00").do(prisjakt)
-	schedule.every().day.at("01:00").do(wipe_offers_db)
+	schedule.every().day.at("01:00").do(rotate_offers_table)
 
 	while True:
 		schedule.run_pending()
