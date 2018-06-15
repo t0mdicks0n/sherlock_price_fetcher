@@ -33,9 +33,7 @@ def iterate_and_fetch_offers(products, country) :
 			# best_match = get_highest_match_id(kelkoo_res, product['name'])
 			for result in kelkoo_res :
 				# Making sure all found offers are unique
-				unique_str = str(product['id']) + result['Offer']['Title'] + result['Offer']['Merchant']['@id'] + result['Offer']['@id'] + result['Offer']['Url']
-				# print json.dumps(result, indent=2)
-				
+				unique_str = str(product['id']) + 'kelkoo_' + country + result['Offer']['Merchant'].get('Name') or None + result['Offer']['Title']
 				if unique_str not in offer_unique_cash.itervalues() :
 					found_offers.append([
 						product['id'],
@@ -55,4 +53,3 @@ def sync_kelkoo_offers(country) :
 	products_for_sync = fetch_products_without_kelkoo(country)
 	# iterate_and_fetch_offers(products_for_sync, country)
 	threaded_execution(products_for_sync, iterate_and_fetch_offers, user_define_job=True, country=country)
-
