@@ -67,7 +67,7 @@ def prisjakt () :
 	sync_prisjakt_offers('SE')
 	print(str(datetime.datetime.now()) + ": Finished Prisjakt.")
 
-def wipe_offers_db () :
+def rotate_offers_table () :
 	print(str(datetime.datetime.now()) + ": Deleting offers data and supporting tables.")
 	offers_wipe()
 	print(str(datetime.datetime.now()) + ": Finished deleting offers data and supporting tables.")

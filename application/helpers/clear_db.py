@@ -9,7 +9,14 @@ def delete_offers() :
 			DELETE FROM prisjakt;
 			-- Amazon currently takes to much time to fetch products for
 			DELETE FROM amazon;
-			DELETE FROM offers;
+			-- This updates which offers table that goes live
+			UPDATE offers_table_rotation
+			SET offers_1 = CASE WHEN offers_1 IS TRUE THEN FALSE ELSE TRUE END,
+					offers_2 = CASE WHEN offers_2 IS TRUE THEN FALSE ELSE TRUE END,
+					updated_at = now()
+			WHERE id = 1;
+			-- Delete all offers from the table that is not longer live
+			SELECT delete_offers();
 		""")
 	except Exception as e :
 		print("There was an error wiping out old offer data and their supporting tables: ", e)
