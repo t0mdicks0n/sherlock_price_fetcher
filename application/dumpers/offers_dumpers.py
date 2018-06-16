@@ -6,7 +6,8 @@ def get_live_offers_table() :
 	try :
 		cur_dict.execute("""
 			SELECT
-				CASE WHEN offers_1 IS TRUE THEN 'offers_1' ELSE 'offers_2' END AS live_offer_table
+				-- I want to write all data to the offers table that isn't live
+				CASE WHEN offers_1 IS TRUE THEN 'offers_2' ELSE 'offers_1' END AS live_offer_table
 			FROM offers_table_rotation
 		""")
 		rows = cur_dict.fetchall()
