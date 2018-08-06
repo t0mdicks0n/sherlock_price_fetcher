@@ -5,6 +5,7 @@ from amazon import sync_amazon_offers
 from ebay import sync_ebay_offers
 from kelkoo import sync_kelkoo_offers
 from db_maintenance import offers_wipe
+from db_maintenance import offers_support_wipe
 from prisjakt import sync_products
 from prisjakt import sync_prisjakt_products
 from prisjakt import sync_prisjakt_offers

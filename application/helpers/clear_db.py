@@ -1,15 +1,26 @@
 from database import Database
 
-def delete_offers() :
+def delete_offer_support_tables () :
 	psql = Database()
 	cur, cur_dict, connection, psycopg2 = psql.get_connection()
 	try :
 		cur_dict.execute("""
 			DELETE FROM pricerunner;
 			DELETE FROM prisjakt;
-			-- Amazon currently takes to much time to fetch products for
+			-- Amazon currently takes a lot of time to fetch products for
 			DELETE FROM amazon;
-			-- This updates which offers table that goes live
+		""")
+	except Exception as e :
+		print("There was an error wiping out supporting tables for the offers: ", e)
+	finally :
+		connection.commit()
+		psql.close_connection()
+
+def delete_offers() :
+	psql = Database()
+	cur, cur_dict, connection, psycopg2 = psql.get_connection()
+	try :
+		cur_dict.execute("""
 			UPDATE offers_table_rotation
 			SET offers_1 = CASE WHEN offers_1 IS TRUE THEN FALSE ELSE TRUE END,
 					offers_2 = CASE WHEN offers_2 IS TRUE THEN FALSE ELSE TRUE END,
@@ -19,7 +30,8 @@ def delete_offers() :
 			SELECT delete_offers();
 		""")
 	except Exception as e :
-		print("There was an error wiping out old offer data and their supporting tables: ", e)
+		print("There was an error wiping out old offer data and rotating the tables: ", e)
 	finally :
 		connection.commit()
 		psql.close_connection()
+

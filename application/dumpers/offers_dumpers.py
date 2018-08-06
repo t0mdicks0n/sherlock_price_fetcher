@@ -1,33 +1,42 @@
 from database import Database
 
-def get_live_offers_table() :
+def get_offers_table(extra_run=False) :
 	psql = Database()
 	cur, cur_dict, connection, psycopg2 = psql.get_connection()
 	try :
-		cur_dict.execute("""
-			SELECT
-				-- I want to write all data to the offers table that isn't live
-				CASE WHEN offers_1 IS TRUE THEN 'offers_2' ELSE 'offers_1' END AS live_offer_table
-			FROM offers_table_rotation
-		""")
+		if extra_run : 
+			cur_dict.execute("""
+				SELECT
+					-- I want to write all data to the offers table that is live when it's a extra run
+					-- that is only updating the offers
+					CASE WHEN offers_1 IS TRUE THEN 'offers_1' ELSE 'offers_2' END AS offer_table
+				FROM offers_table_rotation
+			""")
+		else :
+			cur_dict.execute("""
+				SELECT
+					-- I want to write all data to the offers table that isn't live
+					CASE WHEN offers_1 IS TRUE THEN 'offers_2' ELSE 'offers_1' END AS offer_table
+				FROM offers_table_rotation
+			""")
 		rows = cur_dict.fetchall()
 	except Exception as e :
-		print("There was an erro getting the live offers table ", str(e))
+		print("There was an erro getting the offers table for the purpose ", str(e))
 	psql.close_connection()
 	return rows
 
-def write_offers(offers_data) :
+def write_offers(offers_data, extra_run=False) :
 	psql = Database()
 	cur, cur_dict, connection, psycopg2 = psql.get_connection()
 	if len(offers_data) == 0 :
 		return
 	try :
 		# Store the name of the live offers database in a variable
-		live_offer_table = get_live_offers_table()[0]['live_offer_table']
+		offer_table = get_offers_table(extra_run)[0]['offer_table']
 		# Concatinate the input data to a long string for performance gains
 		args_str = ','.join(cur.mogrify("(%s, %s, %s, %s, %s, %s, %s, %s, %s)", x) for x in offers_data)
 		cur.execute("""
-			INSERT INTO """ + live_offer_table + """ (
+			INSERT INTO """ + offer_table + """ (
 				product_id,
 				offer_source,
 				retail_prod_name,

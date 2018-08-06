@@ -83,6 +83,8 @@ def fetch_amazon_products (country) :
 			FROM amazon
 			WHERE asin_id IS NOT NULL
 			AND amazon_country = %s
+			--AND product_name LIKE 'Apple iPhone X%%'
+			--LIMIT 100
 		""", (country,))
 		rows = cur_dict.fetchall()
 	except Exception as e :
