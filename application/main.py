@@ -15,6 +15,7 @@ from jobs import offers_support_wipe
 import schedule
 import time
 import datetime
+import argparse
 
 def pricerunner() :
 	print(str(datetime.datetime.now()) + ": Starting Pricerunner.")
@@ -87,8 +88,103 @@ def rotate_offers_table () :
 	print(str(datetime.datetime.now()) + ": Finished deleting offers data.")
 
 if __name__ == '__main__' :
-	print(str(datetime.datetime.now()) + ": Sherlock launched successfully.")
-	print(str(datetime.datetime.now()) + ": Now running the scheduler.")
+	# Instantiate the parser
+	parser = argparse.ArgumentParser(
+		description='Kivra Invoicing Calculator',
+		formatter_class=argparse.RawDescriptionHelpFormatter,
+		epilog="""
+   _____ _               _            _    
+  / ____| |             | |          | |   
+ | (___ | |__   ___ _ __| | ___   ___| | __
+  \___ \| '_ \ / _ \ '__| |/ _ \ / __| |/ /
+  ____) | | | |  __/ |  | | (_) | (__|   < 
+ |_____/|_| |_|\___|_|  |_|\___/ \___|_|\_\
+                                           
+                                                                                         
+	""")
+	# Define the arguments
+	parser.add_argument(
+		'-a',
+		'--amazon',
+		type=bool,
+		help='Calculates Amazon.'
+	)
+	parser.add_argument(
+		'-pr',
+		'--pricerunner',
+		type=bool,
+		help='Calculates Pricerunner.'
+	)
+	parser.add_argument(
+		'-e',
+		'--ebay',
+		type=bool,
+		help='Calculates eBay.'
+	)
+	parser.add_argument(
+		'-k',
+		'--kelkoo',
+		type=bool,
+		help='Calculates Kelkoo.'
+	)
+	parser.add_argument(
+		'-pj',
+		'--prisjakt',
+		type=bool,
+		help='Calculates Prisjakt.'
+	)
+	parser.add_argument(
+		'-d',
+		'--delete-support-tables',
+		type=bool,
+		help='Delete all supprt tables.'
+	)
+	parser.add_argument(
+		'-r',
+		'--rotate-offers-table',
+		type=bool,
+		help='Rotates the offers tables.'
+	)
+	parser.add_argument(
+		'-ao',
+		'--amazon-only-offers',
+		type=bool,
+		help='Only fetch prices for existing offers for Amazon.'
+	)
+	# Print the help
+	# parser.print_help()
+	# Parse the arguments
+	args = parser.parse_args()
+
+
+	if args.amazon :
+		amazon()
+	elif args.amazon_only_offers :
+		amazon_only_offers()
+	elif args.delete_support_tables :
+		delete_support_tables()
+	elif args.ebay :
+		ebay()
+	elif args.kelkoo :
+		kelkoo()
+	elif args.pricerunner :
+		pricerunner()
+	elif args.prisjakt :
+		prisjakt()
+	elif args.rotate_offers_table :
+		rotate_offers_table()
+	else :
+		print str(datetime.datetime.now()) + "No option provided for Sherlock to execute."
+
+
+
+	# Namespace(amazon=None, amazon_only_offers=None, 
+	# delete_support_tables=None, ebay=None, kelkoo=None, 
+	# pricerunner=None, prisjakt=None, rotate_offers_table=None)
+
+
+	# print(str(datetime.datetime.now()) + ": Sherlock launched successfully.")
+	# print(str(datetime.datetime.now()) + ": Now running the scheduler.")
 
 	# schedule.every().hour.do(job, param1, param2)
 
@@ -96,26 +192,26 @@ if __name__ == '__main__' :
 	# schedule.every(1).minutes.do(amazon)
 
 	# Nightly run
-	schedule.every().day.at("01:00").do(deleting_support_tables)
-	schedule.every().day.at("01:00").do(amazon)
-	schedule.every().day.at("01:00").do(pricerunner)
-	schedule.every().day.at("01:00").do(ebay)
-	schedule.every().day.at("01:00").do(kelkoo)
-	schedule.every().day.at("01:00").do(prisjakt)
-	schedule.every().day.at("01:00").do(rotate_offers_table)
+	# schedule.every().day.at("01:00").do(deleting_support_tables)
+	# schedule.every().day.at("01:00").do(amazon)
+	# schedule.every().day.at("01:00").do(pricerunner)
+	# schedule.every().day.at("01:00").do(ebay)
+	# schedule.every().day.at("01:00").do(kelkoo)
+	# schedule.every().day.at("01:00").do(prisjakt)
+	# schedule.every().day.at("01:00").do(rotate_offers_table)
 
-	# Daily run
-	schedule.every().day.at("13:00").do(deleting_support_tables)
-	schedule.every().day.at("13:00").do(amazon)
-	schedule.every().day.at("13:00").do(pricerunner)
-	schedule.every().day.at("13:00").do(ebay)
-	schedule.every().day.at("13:00").do(kelkoo)
-	schedule.every().day.at("13:00").do(prisjakt)
-	schedule.every().day.at("13:00").do(rotate_offers_table)
+	# # Daily run
+	# schedule.every().day.at("13:00").do(deleting_support_tables)
+	# schedule.every().day.at("13:00").do(amazon)
+	# schedule.every().day.at("13:00").do(pricerunner)
+	# schedule.every().day.at("13:00").do(ebay)
+	# schedule.every().day.at("13:00").do(kelkoo)
+	# schedule.every().day.at("13:00").do(prisjakt)
+	# schedule.every().day.at("13:00").do(rotate_offers_table)
 
-	# Extra Amazon offers run
-	schedule.every().day.at("11:00").do(amazon_only_offers)
-	schedule.every().day.at("17:00").do(amazon_only_offers)
+	# # Extra Amazon offers run
+	# schedule.every().day.at("11:00").do(amazon_only_offers)
+	# schedule.every().day.at("17:00").do(amazon_only_offers)
 
 	# amazon_only_offers()
 

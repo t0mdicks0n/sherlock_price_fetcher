@@ -1,0 +1,14 @@
+FROM python:2
+WORKDIR /usr/src/app
+COPY requirements.txt ./
+# Define envoirment variables
+ENV POSTGRES_USER "postgres"
+ENV POSTGRES_PASSWORD "9GAfs882PI1t9MDG"
+ENV POSTGRES_DBNAME "prices_prod"
+ENV POSTGRES_HOST "127.0.0.1"
+# Install dependecies
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+# Set working directory
+WORKDIR /usr/src/app/
+ENTRYPOINT ["python", "application/main.py"]

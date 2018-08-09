@@ -7,3 +7,4 @@ requests
 bottlenose
 schedule
 bs4
+argparse

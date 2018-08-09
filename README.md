@@ -8,3 +8,10 @@ Sherlock is the main program for fetching prices from various sources to the pan
 ### Deployment
 1. Then simply execute `gcloud app deploy`
 2. Optionaly show the logs via `gcloud app logs tail -s sherlock`
+
+### Run in Docker
+1. Build the image: `sudo docker build -t sherlock .`
+2. Run the image, everything after the image name will be passed in as variables to the sherlock program: `sudo docker run -t --net=host sherlock --amazon true`
+3. Control that the now container is running with `docker ps`
+4. Check logs on a running container with `docker logs <CONTAINER ID>`
+5. End a running container with `docker kill <CONTAINER ID>`
