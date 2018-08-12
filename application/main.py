@@ -137,7 +137,7 @@ if __name__ == '__main__' :
 		'-d',
 		'--deleting-support-tables',
 		type=bool,
-		help='Delete all supprt tables.'
+		help='Delete all support tables.'
 	)
 	parser.add_argument(
 		'-r',
@@ -215,6 +215,7 @@ if __name__ == '__main__' :
 
 	# amazon_only_offers()
 
-	while True:
-		schedule.run_pending()
-		time.sleep(1)
+	# while True:
+	# 	schedule.run_pending()
+	# 	time.sleep(1)
+	
