@@ -135,7 +135,7 @@ if __name__ == '__main__' :
 	)
 	parser.add_argument(
 		'-d',
-		'--delete-support-tables',
+		'--deleting-support-tables',
 		type=bool,
 		help='Delete all supprt tables.'
 	)
@@ -161,8 +161,8 @@ if __name__ == '__main__' :
 		amazon()
 	elif args.amazon_only_offers :
 		amazon_only_offers()
-	elif args.delete_support_tables :
-		delete_support_tables()
+	elif args.deleting_support_tables :
+		deleting_support_tables()
 	elif args.ebay :
 		ebay()
 	elif args.kelkoo :

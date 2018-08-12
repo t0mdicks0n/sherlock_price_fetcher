@@ -15,3 +15,4 @@ Sherlock is the main program for fetching prices from various sources to the pan
 3. Control that the now container is running with `docker ps`
 4. Check logs on a running container with `docker logs <CONTAINER ID>`
 5. End a running container with `docker kill <CONTAINER ID>`
+6. Remove all Docker images `sudo docker rmi -f $(sudo docker images -q)`

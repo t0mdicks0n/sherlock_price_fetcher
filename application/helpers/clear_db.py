@@ -34,4 +34,3 @@ def delete_offers() :
 	finally :
 		connection.commit()
 		psql.close_connection()
-
