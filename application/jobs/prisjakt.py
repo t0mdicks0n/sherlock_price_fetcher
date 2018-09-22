@@ -19,8 +19,12 @@ def sync_products(category) :
 	finally :
 		for product in products :
 			price = None
+			# Sometime Prisjakt gray out the price for some this logic is adjusting for that
 			if next(iter(product.select(".price") or []), None) is not None :
 				price = int(''.join(re.findall(r'\d+', product.select(".price")[0].get_text())))
+			else :
+				price = int(''.join(re.findall(r'\d+', product.select(".muted a")[0].get_text())))
+			# Scrape the rest of the data in the static structure
 			found_products.append([
 				product.select(".product-name a")[0].get_text(),
 				category,
