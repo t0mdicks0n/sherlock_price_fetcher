@@ -11,6 +11,7 @@ from jobs import sync_products
 from jobs import sync_prisjakt_products
 from jobs import sync_prisjakt_offers
 from jobs import offers_support_wipe
+from jobs import get_and_update_forex
 
 import schedule
 import time
@@ -82,10 +83,15 @@ def deleting_support_tables() :
 	offers_support_wipe()
 	print(str(datetime.datetime.now()) + ": Finished deleting supporting tables.")
 
-def rotate_offers_table () :
+def rotate_offers_table() :
 	print(str(datetime.datetime.now()) + ": Deleting offers data.")
 	offers_wipe()
 	print(str(datetime.datetime.now()) + ": Finished deleting offers data.")
+
+def forex() :
+	print(str(datetime.datetime.now()) + ": Fetching and updating forex exchange rates.")
+	get_and_update_forex()
+	print(str(datetime.datetime.now()) + ": Finished updating forex exchange rates.")
 
 if __name__ == '__main__' :
 	# Instantiate the parser
@@ -151,6 +157,12 @@ if __name__ == '__main__' :
 		type=bool,
 		help='Only fetch prices for existing offers for Amazon.'
 	)
+	parser.add_argument(
+		'-fx',
+		'--forex',
+		type=bool,
+		help='Fetch current forex exchange rates and write to DB.'
+	)
 	# Print the help
 	# parser.print_help()
 	# Parse the arguments
@@ -173,6 +185,8 @@ if __name__ == '__main__' :
 		prisjakt()
 	elif args.rotate_offers_table :
 		rotate_offers_table()
+	elif args.forex :
+		forex()
 	else :
 		print str(datetime.datetime.now()) + "No option provided for Sherlock to execute."
 

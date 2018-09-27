@@ -9,3 +9,4 @@ from db_maintenance import offers_support_wipe
 from prisjakt import sync_products
 from prisjakt import sync_prisjakt_products
 from prisjakt import sync_prisjakt_offers
+from forex import get_and_update_forex
