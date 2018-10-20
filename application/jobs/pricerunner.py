@@ -8,6 +8,7 @@ from fetchers import fetch_exchange_rate
 from dumpers import write_pricerunner
 from dumpers import write_offers
 import pprint
+import json
 
 def iterate_and_fetch_products(products, country) :
 	found_products = []
@@ -64,21 +65,20 @@ def iterate_and_fetch_offers(products, country) :
 			while num_to_fetch > 0 :
 				try :
 					offer = pricerunner_res[15 - num_to_fetch]
-					# Only store items with links to the offers
-					if offer['_info'].get('wlink', None) is not None :
-						if offer['_info'].get('stockInfo', None) is not None :
-							if offer['_info']['stockInfo'].get('link', None) is not None :
-								found_offers.append([
-									products[i]['product_id'],
-									'pricerunner_' + country,
-									offer['retailerProductName'],
-									offer['retailer']['name'],
-									country,
-									float(offer['priceEx']['value'].split('.')[0]) * float(exchange_rate['rate']),
-									float(offer['shippingCostFixEx'].split('.')[0]) * float(exchange_rate['rate']),
-									True,
-									'https://www.pricerunner.' + country.lower() + offer['_info']['stockInfo']['link']['href']
-								])
+					if offer.get('retailerInfoUrl', None) is not None :
+						if offer.get('price', None) is not None :
+							found_offers.append([
+								products[i]['product_id'],
+								'pricerunner_' + country,
+								offer['productName'],
+								offer['retailerName'],
+								country,
+								float(offer['price']) * float(exchange_rate['rate']),
+								# float(offer['shipping'].split('.')[0]) * float(exchange_rate['rate']),
+								None,
+								True,
+								'https://www.pricerunner.' + country.lower() + offer['retailerClickout']
+							])
 					num_to_fetch -= 1
 				except IndexError :
 					# No more items exists
