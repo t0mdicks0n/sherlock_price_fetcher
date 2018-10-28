@@ -25,14 +25,15 @@ def get_offers_table(extra_run=False) :
 	psql.close_connection()
 	return rows
 
-def write_offers(offers_data, extra_run=False) :
+def write_offers(offers_data, extra_run=False, offer_table=None) :
 	psql = Database()
 	cur, cur_dict, connection, psycopg2 = psql.get_connection()
 	if len(offers_data) == 0 :
 		return
 	try :
 		# Store the name of the live offers database in a variable
-		offer_table = get_offers_table(extra_run)[0]['offer_table']
+		if offer_table == None :
+			offer_table = get_offers_table(extra_run)[0]['offer_table']
 		# Concatinate the input data to a long string for performance gains
 		args_str = ','.join(cur.mogrify("(%s, %s, %s, %s, %s, %s, %s, %s, %s)", x) for x in offers_data)
 		cur.execute("""

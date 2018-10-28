@@ -2,6 +2,7 @@ from pricerunner_dumpers import write_pricerunner
 from amazon_dumpers import write_amazon
 from amazon_dumpers import del_empty_ama_res
 from offers_dumpers import write_offers
+from offers_dumpers import get_offers_table
 from product_dumpers import write_products
 from prisjakt_dumpers import write_prisjakt
 from forex_dumpers import write_currency

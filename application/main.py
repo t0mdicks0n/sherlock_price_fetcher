@@ -20,13 +20,13 @@ import argparse
 
 def pricerunner() :
 	print(str(datetime.datetime.now()) + ": Starting Pricerunner.")
-	sync_pricerunner_products('SE')
-	sync_pricerunner_offers('SE')
-	sync_pricerunner_products('DK')
-	sync_pricerunner_offers('DK')
+	# sync_pricerunner_products('SE')
+	# sync_pricerunner_offers('SE')
+	# sync_pricerunner_products('DK')
+	# sync_pricerunner_offers('DK')
 	# ----Fucked up result from the API 
-	# sync_pricerunner_products('UK')
-	# sync_pricerunner_offers('UK')
+	sync_pricerunner_products('UK')
+	sync_pricerunner_offers('UK')
 	print(str(datetime.datetime.now()) + ": Finished Pricerunner.")
 
 def amazon() :

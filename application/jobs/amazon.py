@@ -7,6 +7,7 @@ from helpers import get_amazon_object
 from dumpers import write_amazon
 from dumpers import write_offers
 from dumpers import del_empty_ama_res
+from dumpers import get_offers_table
 from helpers import amazon_value_to_sek
 from fetchers import fetch_exchange_rate
 import json
@@ -98,6 +99,8 @@ def ama_batch_fetcher(products, amazon, exchange_rate, country) :
 	return fetched_data
 
 def iterate_and_fetch_offers(products, amazon, country, extra_run) :
+	# Store the name of the current offer table in a variable since Amazon take such long time to run
+	offer_table = get_offers_table(extra_run)[0]['offer_table']
 	if len(products) is 0 :
 		print "No Amazon products to fetch prices for!"
 		return 
@@ -126,7 +129,7 @@ def iterate_and_fetch_offers(products, amazon, country, extra_run) :
 					product['offer_url']
 				])
 			offer_unique_cash[unique_str] = unique_str
-		write_offers(found_offers, extra_run)
+		write_offers(found_offers, extra_run, offer_table)
 	except Exception as e :
 		print("There was an error with fetching offers: ", e)
 
