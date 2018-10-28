@@ -20,11 +20,10 @@ import argparse
 
 def pricerunner() :
 	print(str(datetime.datetime.now()) + ": Starting Pricerunner.")
-	# sync_pricerunner_products('SE')
-	# sync_pricerunner_offers('SE')
-	# sync_pricerunner_products('DK')
-	# sync_pricerunner_offers('DK')
-	# ----Fucked up result from the API 
+	sync_pricerunner_products('SE')
+	sync_pricerunner_offers('SE')
+	sync_pricerunner_products('DK')
+	sync_pricerunner_offers('DK')
 	sync_pricerunner_products('UK')
 	sync_pricerunner_offers('UK')
 	print(str(datetime.datetime.now()) + ": Finished Pricerunner.")
@@ -189,47 +188,3 @@ if __name__ == '__main__' :
 		forex()
 	else :
 		print str(datetime.datetime.now()) + "No option provided for Sherlock to execute."
-
-
-
-	# Namespace(amazon=None, amazon_only_offers=None, 
-	# delete_support_tables=None, ebay=None, kelkoo=None, 
-	# pricerunner=None, prisjakt=None, rotate_offers_table=None)
-
-
-	# print(str(datetime.datetime.now()) + ": Sherlock launched successfully.")
-	# print(str(datetime.datetime.now()) + ": Now running the scheduler.")
-
-	# schedule.every().hour.do(job, param1, param2)
-
-	# sync_amazon_offers('UK')
-	# schedule.every(1).minutes.do(amazon)
-
-	# Nightly run
-	# schedule.every().day.at("01:00").do(deleting_support_tables)
-	# schedule.every().day.at("01:00").do(amazon)
-	# schedule.every().day.at("01:00").do(pricerunner)
-	# schedule.every().day.at("01:00").do(ebay)
-	# schedule.every().day.at("01:00").do(kelkoo)
-	# schedule.every().day.at("01:00").do(prisjakt)
-	# schedule.every().day.at("01:00").do(rotate_offers_table)
-
-	# # Daily run
-	# schedule.every().day.at("13:00").do(deleting_support_tables)
-	# schedule.every().day.at("13:00").do(amazon)
-	# schedule.every().day.at("13:00").do(pricerunner)
-	# schedule.every().day.at("13:00").do(ebay)
-	# schedule.every().day.at("13:00").do(kelkoo)
-	# schedule.every().day.at("13:00").do(prisjakt)
-	# schedule.every().day.at("13:00").do(rotate_offers_table)
-
-	# # Extra Amazon offers run
-	# schedule.every().day.at("11:00").do(amazon_only_offers)
-	# schedule.every().day.at("17:00").do(amazon_only_offers)
-
-	# amazon_only_offers()
-
-	# while True:
-	# 	schedule.run_pending()
-	# 	time.sleep(1)
-	
