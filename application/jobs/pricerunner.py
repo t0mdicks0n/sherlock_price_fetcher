@@ -77,7 +77,7 @@ def iterate_and_fetch_offers(products, country) :
 								# float(offer['shipping'].split('.')[0]) * float(exchange_rate['rate']),
 								None,
 								True,
-								'https://www.pricerunner.' + country.lower() + offer['retailerClickout']
+								'https://www.pricerunner.' + (country.lower() if country != 'UK' else 'com') + offer['retailerClickout']
 							])
 					num_to_fetch -= 1
 				except IndexError :
@@ -95,4 +95,3 @@ def sync_product_links(country) :
 def sync_pricerunner_offers(country) :
 	products_for_sync = fetch_pricerunner_products(country)
 	threaded_execution(products_for_sync, iterate_and_fetch_offers, user_define_job=True, country=country)
-	
