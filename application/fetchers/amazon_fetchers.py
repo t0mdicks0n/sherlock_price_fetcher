@@ -34,7 +34,7 @@ def search_for_offer(asin, amazon) :
 		print "There was an error when calling the Amazon API: ", e
 	finally :
 		# print json.dumps(response, indent=2, sort_keys=True)
-		# print json.dumps(response['ItemLookupResponse']['Items']['Item'], indent=2, sort_keys=True)
+		# print json.dumps(response['ItemLookupResponse']['Items'], indent=2, sort_keys=True)
 		return response['ItemLookupResponse']['Items']['Item']
 
 def get_country_url (country) :

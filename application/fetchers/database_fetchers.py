@@ -61,6 +61,9 @@ def fetch_products_without_amazon (country) :
 			ON A.id = B.product_id
 			WHERE B.product_id IS NULL
 			AND price > 0
+			-- Only grab the 500 most popular products since Ama throttles their API
+			ORDER BY A.popularity_idx ASC
+			LIMIT 500
 		""", (country, country))
 		rows = cur_dict.fetchall()
 	except Exception as e :

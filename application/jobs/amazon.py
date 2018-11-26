@@ -116,7 +116,8 @@ def iterate_and_fetch_offers(products, amazon, country, extra_run) :
 				# print "_____________________"
 				# print "Product: ", product['product_name']
 				# print "Price: ", offer_data[i]['price']
-				# print "url: ", product['offer_url']
+				print "url: ", product['offer_url']
+				
 				found_offers.append([
 					product['product_id'],
 					'amazon_' + country,

@@ -9,6 +9,8 @@ from fetchers import fetch_prisjakt_product_offers
 from dumpers import write_offers
 from helpers import threaded_execution
 
+# for idx, val in enumerate(ints):
+
 def sync_products(category) :
 	found_products = []
 	try :
@@ -17,7 +19,7 @@ def sync_products(category) :
 		print "There was an error with scraping products from Prisjakt: ", str(e)
 		return
 	finally :
-		for product in products :
+		for idx, product in enumerate(products) :
 			price = None
 			# Sometime Prisjakt gray out the price for some this logic is adjusting for that
 			if next(iter(product.select(".price") or []), None) is not None :
@@ -29,7 +31,8 @@ def sync_products(category) :
 				product.select(".product-name a")[0].get_text(),
 				category,
 				product.select("a img")[0].attrs["src"],
-				price			
+				price,
+				idx
 			])
 	write_products(found_products)
 
