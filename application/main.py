@@ -59,7 +59,7 @@ def ebay () :
 	# sync_ebay_offers('ES')
 	print(str(datetime.datetime.now()) + ": Finished eBay.")
 
-def kelkoo () :
+def kelkoo() :
 	print(str(datetime.datetime.now()) + ": Starting Kelkoo.")
 	sync_kelkoo_offers('UK')
 	sync_kelkoo_offers('DE')
@@ -70,12 +70,17 @@ def kelkoo () :
 	sync_kelkoo_offers('FI')
 	print(str(datetime.datetime.now()) + ": Finished Kelkoo.")
 
-def prisjakt () :
+def prisjakt() :
 	print(str(datetime.datetime.now()) + ": Starting Prisjakt.")
-	sync_products("smartphones")
+	sync_products()
 	sync_prisjakt_products('SE')
 	sync_prisjakt_offers('SE')
 	print(str(datetime.datetime.now()) + ": Finished Prisjakt.")
+
+def prisjakt_products() :
+	print(str(datetime.datetime.now()) + ": Starting Prisjakt Products.")
+	sync_products()
+	print(str(datetime.datetime.now()) + ": Finished Prisjakt Products.")	
 
 def deleting_support_tables() :
 	print(str(datetime.datetime.now()) + ": Deleting supporting tables.")
@@ -139,6 +144,12 @@ if __name__ == '__main__' :
 		help='Calculates Prisjakt.'
 	)
 	parser.add_argument(
+		'-pjpr',
+		'--prisjakt_products',
+		type=bool,
+		help='Calculates Prisjakt.'
+	)
+	parser.add_argument(
 		'-d',
 		'--deleting-support-tables',
 		type=bool,
@@ -167,7 +178,6 @@ if __name__ == '__main__' :
 	# Parse the arguments
 	args = parser.parse_args()
 
-
 	if args.amazon :
 		amazon()
 	elif args.amazon_only_offers :
@@ -182,6 +192,8 @@ if __name__ == '__main__' :
 		pricerunner()
 	elif args.prisjakt :
 		prisjakt()
+	elif args.prisjakt_products :
+		prisjakt_products()
 	elif args.rotate_offers_table :
 		rotate_offers_table()
 	elif args.forex :

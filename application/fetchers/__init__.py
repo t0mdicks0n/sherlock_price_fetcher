@@ -15,6 +15,7 @@ from kelkoo_fetchers import search_for_offer as search_for_k_offer
 from prisjakt_fetchers import get_products
 from database_fetchers import fetch_products_without_prisjakt
 from database_fetchers import fetch_prisjakt_products
+from database_fetchers import fetch_categories
 from prisjakt_fetchers import fetch_prisjakt_product_offers
 from forex_fetchers import get_latest_forex
 from forex_fetchers import get_latest_exchange_rate

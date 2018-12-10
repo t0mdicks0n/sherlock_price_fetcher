@@ -1,40 +1,11 @@
-from fetchers import get_products
 from bs4 import BeautifulSoup
 import re
-from dumpers import write_products
 from fetchers import fetch_products_without_prisjakt
 from dumpers import write_prisjakt
 from fetchers import fetch_prisjakt_products
 from fetchers import fetch_prisjakt_product_offers
 from dumpers import write_offers
 from helpers import threaded_execution
-
-# for idx, val in enumerate(ints):
-
-def sync_products(category) :
-	found_products = []
-	try :
-		products = get_products(category)
-	except Exception as e :
-		print "There was an error with scraping products from Prisjakt: ", str(e)
-		return
-	finally :
-		for idx, product in enumerate(products) :
-			price = None
-			# Sometime Prisjakt gray out the price for some this logic is adjusting for that
-			if next(iter(product.select(".price") or []), None) is not None :
-				price = int(''.join(re.findall(r'\d+', product.select(".price")[0].get_text())))
-			else :
-				price = int(''.join(re.findall(r'\d+', product.select(".muted a")[0].get_text())))
-			# Scrape the rest of the data in the static structure
-			found_products.append([
-				product.select(".product-name a")[0].get_text(),
-				category,
-				product.select("a img")[0].attrs["src"],
-				price,
-				idx
-			])
-	write_products(found_products)
 
 def iterate_and_fetch_products(wanted_products, country) :
 	found_products = []

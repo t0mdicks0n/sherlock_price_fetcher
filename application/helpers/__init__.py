@@ -4,3 +4,4 @@ from amazon_api import get_amazon_object
 from normalize_price import amazon_value_to_sek
 from clear_db import delete_offers
 from clear_db import delete_offer_support_tables
+from exception_print import print_exception

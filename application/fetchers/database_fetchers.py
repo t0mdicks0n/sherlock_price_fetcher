@@ -48,22 +48,24 @@ def fetch_products_without_amazon (country) :
 	cur, cur_dict, connection, psycopg2 = psql.get_connection()
 	try :
 		cur_dict.execute("""
-			SELECT
-				A.name,
-				A.id,
-				A.price::float / (SELECT to_sek FROM currency WHERE country = %s) AS price
-			FROM products A
-			LEFT JOIN (
-				SELECT *
-				FROM amazon
-				WHERE amazon_country = %s
-			) B
-			ON A.id = B.product_id
-			WHERE B.product_id IS NULL
-			AND price > 0
-			-- Only grab the 500 most popular products since Ama throttles their API
-			ORDER BY A.popularity_idx ASC
-			LIMIT 500
+			SELECT * FROM (
+				SELECT
+					A.name,
+					A.id,
+					A.price::float / (SELECT to_sek FROM currency WHERE country = %s) AS price,
+					row_number() OVER (PARTITION BY category ORDER BY popularity_idx ASC) AS rownum
+				FROM products A
+				LEFT JOIN (
+					SELECT *
+					FROM amazon
+					WHERE amazon_country = %s
+				) B
+				ON A.id = B.product_id
+				WHERE B.product_id IS NULL
+				AND price > 0
+			) prod_table
+			-- Grab the 500 most popular products from each category
+			WHERE rownum < 500
 		""", (country, country))
 		rows = cur_dict.fetchall()
 	except Exception as e :
@@ -175,6 +177,22 @@ def fetch_prisjakt_products(country) :
 			WHERE URL IS NOT NULL
 			AND prisjakt_market = %s
 		""", (country,))
+		rows = cur_dict.fetchall()
+	except Exception as e :
+		print("There was an error: ", e)
+	finally :
+		psql.close_connection()
+		return rows
+
+def fetch_categories() :
+	psql = Database()
+	cur, cur_dict, connection, psycopg2 = psql.get_connection()
+	try :
+		cur_dict.execute("""
+			SELECT
+				*
+			FROM categories;
+		""")
 		rows = cur_dict.fetchall()
 	except Exception as e :
 		print("There was an error: ", e)
