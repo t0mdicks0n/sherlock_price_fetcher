@@ -6,11 +6,14 @@ from fetchers import fetch_prisjakt_products
 from fetchers import fetch_prisjakt_product_offers
 from dumpers import write_offers
 from helpers import threaded_execution
+from fetchers import get_products
+from fetchers import fetch_categories
+from prisjakt_products import filter_duplicate_products
 
-def iterate_and_fetch_products(wanted_products, country) :
+def iterate_and_fetch_products(wanted_products, country, prisjakt_category_id) :
 	found_products = []
 	try :
-		fetched_products = get_products()
+		fetched_products = get_products(prisjakt_category_id)
 	except Exception as e :
 		print "There was an error with scraping products from Prisjakt: ", str(e)
 		return
@@ -27,7 +30,8 @@ def iterate_and_fetch_products(wanted_products, country) :
 					country,
 					price
 				])
-		write_prisjakt(found_products)
+		found_products_unique = filter_duplicate_products(found_products)
+		write_prisjakt(found_products_unique)
 
 def iterate_and_fetch_offers(products, country) :
 	found_offers = []
@@ -80,7 +84,10 @@ def iterate_and_fetch_offers(products, country) :
 
 def sync_prisjakt_products(country) :
 	products_for_sync = fetch_products_without_prisjakt(country)
-	iterate_and_fetch_products(products_for_sync, country)
+	categories = fetch_categories()
+	# Iterate over the categories
+	for category in categories :
+		iterate_and_fetch_products(products_for_sync, country, category['prisjakt_category_id'])
 
 def sync_prisjakt_offers(country) :
 	products_for_sync = fetch_prisjakt_products(country)

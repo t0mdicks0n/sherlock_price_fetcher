@@ -1,5 +1,5 @@
 service: sherlock
-runtime: custom
+runtime: python
 env: flex
 entrypoint: python application/main.py
 

@@ -21,8 +21,3 @@ def write_prisjakt (product_data) :
 		psql.close_connection()
 	except Exception as e :
 		print("There was an error when writing prisjakt data to DB: ", e)
-
-	# product_id INTEGER,
-	# url TEXT DEFAULT NULL,
-	# prisjakt_market TEXT,
-	# lowest_price INTEGER
