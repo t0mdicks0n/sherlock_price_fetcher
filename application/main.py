@@ -12,6 +12,7 @@ from jobs import sync_prisjakt_products
 from jobs import sync_prisjakt_offers
 from jobs import offers_support_wipe
 from jobs import get_and_update_forex
+from jobs import sync_best_int_offers
 
 import schedule
 import time
@@ -98,6 +99,11 @@ def forex() :
 	get_and_update_forex()
 	print(str(datetime.datetime.now()) + ": Finished updating forex exchange rates.")
 
+def best_international_offers() :
+	print(str(datetime.datetime.now()) + ": Starting the international best offers database job.")
+	sync_best_int_offers()
+	print(str(datetime.datetime.now()) + ": Finished the international best offers database job.")
+
 if __name__ == '__main__' :
 	# Instantiate the parser
 	parser = argparse.ArgumentParser(
@@ -117,62 +123,68 @@ if __name__ == '__main__' :
 	parser.add_argument(
 		'-a',
 		'--amazon',
-		type=bool,
+		action='store_true',
 		help='Calculates Amazon.'
 	)
 	parser.add_argument(
 		'-pr',
 		'--pricerunner',
-		type=bool,
+		action='store_true',
 		help='Calculates Pricerunner.'
 	)
 	parser.add_argument(
 		'-e',
 		'--ebay',
-		type=bool,
+		action='store_true',
 		help='Calculates eBay.'
 	)
 	parser.add_argument(
 		'-k',
 		'--kelkoo',
-		type=bool,
+		action='store_true',
 		help='Calculates Kelkoo.'
 	)
 	parser.add_argument(
 		'-pj',
 		'--prisjakt',
-		type=bool,
+		action='store_true',
 		help='Calculates Prisjakt.'
 	)
 	parser.add_argument(
 		'-pjpr',
 		'--prisjakt_products',
-		type=bool,
+		action='store_true',
 		help='Calculates Prisjakt.'
 	)
 	parser.add_argument(
 		'-d',
 		'--deleting-support-tables',
-		type=bool,
+		action='store_true',
 		help='Delete all support tables.'
 	)
 	parser.add_argument(
 		'-r',
 		'--rotate-offers-table',
-		type=bool,
+		action='store_true',
 		help='Rotates the offers tables.'
 	)
 	parser.add_argument(
 		'-ao',
 		'--amazon-only-offers',
-		type=bool,
+		action='store_true',
 		help='Only fetch prices for existing offers for Amazon.'
 	)
 	parser.add_argument(
 		'-fx',
 		'--forex',
-		type=bool,
+		action='store_true',
 		help='Fetch current forex exchange rates and write to DB.'
+	)
+	parser.add_argument(
+		'-bo',
+		'--best-offers',
+		action='store_true',
+		help='Run the international best offers database job.'
 	)
 	# Print the help
 	# parser.print_help()
@@ -199,5 +211,7 @@ if __name__ == '__main__' :
 		rotate_offers_table()
 	elif args.forex :
 		forex()
+	elif args.best_offers :
+		best_international_offers()
 	else :
 		print str(datetime.datetime.now()) + "No option provided for Sherlock to execute."
