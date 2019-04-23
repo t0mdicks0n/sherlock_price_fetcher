@@ -73,7 +73,7 @@ def kelkoo() :
 
 def prisjakt() :
 	print(str(datetime.datetime.now()) + ": Starting Prisjakt.")
-	sync_products()
+	# sync_products()
 	print(str(datetime.datetime.now()) + ": Finished scraping products from Prisjakt.")
 	sync_prisjakt_products('SE')
 	sync_prisjakt_offers('SE')

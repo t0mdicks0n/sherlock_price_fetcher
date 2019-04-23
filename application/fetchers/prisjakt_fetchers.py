@@ -48,7 +48,6 @@ def get_products(prisjakt_category_id, products=[], prod_count=0) :
 
 def fetch_prisjakt_product_offers(url, country) :
 	try : 
-
 		# Adjust the url to go on the classiv version of Prisjakts web. See discussion in code above
 		request_string = url.split("www")[0] + "classic" + url.split("www")[1] + "&hide=used%2Cdemo"
 		headers = {

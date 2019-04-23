@@ -19,7 +19,13 @@ def iterate_and_fetch_products(wanted_products, country, prisjakt_category_id) :
 		return
 	finally :
 		for product in fetched_products :
-			prod_name = product.select(".product-name a")[0].get_text()
+			# TODO: Find the actual bug in this instead of just having this error handling
+			try :
+				prod_name = product.select(".product-name a")[0].get_text()
+			except Exception as e :
+				print "I couldn't scrape name!"
+				# Since prod_name is none I will not pass the if below and continue on to the next prod
+				prod_name = None
 			if prod_name in wanted_products :
 				price = None
 				if next(iter(product.select(".price") or []), None) is not None :
