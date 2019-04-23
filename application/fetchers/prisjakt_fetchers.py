@@ -36,7 +36,7 @@ def scrape_prod_site(prod_count, prisjakt_category_id) :
 
 # TODO: When category=False we want to fetch data for all different available categories
 def get_products(prisjakt_category_id, products=[], prod_count=0) :
-	print "prod_count", str(prod_count)
+	print "prod_count", str(prod_count), " for prisjakt_category_id ", str(prisjakt_category_id)
 	fetched_products = scrape_prod_site(prod_count, prisjakt_category_id)
 	if len(fetched_products) == 0 :
 		print "Done! Fetched ", str(len(products)), " number of products for the prisjakt_category_id " + prisjakt_category_id + "!"
