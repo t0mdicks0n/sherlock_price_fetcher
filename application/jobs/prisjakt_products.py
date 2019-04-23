@@ -26,7 +26,12 @@ def scrape_prisjakt_products(category, prisjakt_category_id) :
 			if next(iter(product.select(".price") or []), None) is not None :
 				price = int(''.join(re.findall(r'\d+', product.select(".price")[0].get_text())))
 			else :
-				price = int(''.join(re.findall(r'\d+', product.select(".muted a")[0].get_text())))
+				try :
+					price = int(''.join(re.findall(r'\d+', product.select(".muted a")[0].get_text())))
+				except Exception as e :
+					print "Couldn't scrape price on Prisjakt for the product: ", str(idx)
+				else :
+					price = None
 			# Scrape the rest of the data in the static structure
 			found_products.append([
 				product.select(".product-name a")[0].get_text(),
