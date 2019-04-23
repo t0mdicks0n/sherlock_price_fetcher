@@ -33,13 +33,16 @@ def scrape_prisjakt_products(category, prisjakt_category_id) :
 				else :
 					price = None
 			# Scrape the rest of the data in the static structure
-			found_products.append([
-				product.select(".product-name a")[0].get_text(),
-				category,
-				product.select("a img")[0].attrs["src"],
-				price,
-				idx
-			])
+			try :
+				found_products.append([
+					product.select(".product-name a")[0].get_text(),
+					category,
+					product.select("a img")[0].attrs["src"],
+					price,
+					idx
+				])
+			except Exception as e :
+				print "Couldn't scrape info on Prisjakt for the product: ", str(idx), " with prisjakt_category_id: ", str(prisjakt_category_id)
 	found_products_unique = filter_duplicate_products(found_products)
 	write_products(found_products_unique)
 
