@@ -36,4 +36,5 @@ def search_for_offer(api_key, country, product_name, price) :
 		print("There was an error when fetching product data from eBay: ", e)
 	finally :
 		# print json.dumps(dict_res['findItemsAdvancedResponse']['searchResult']['item'][:4], indent=2)
+		# print json.dumps(dict_res, indent=2)
 		return dict_res['findItemsAdvancedResponse']['searchResult']['item'][:4]

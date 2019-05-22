@@ -74,8 +74,10 @@ def kelkoo() :
 def prisjakt() :
 	print(str(datetime.datetime.now()) + ": Starting Prisjakt.")
 	sync_products()
-	print(str(datetime.datetime.now()) + ": Finished scraping products from Prisjakt.")
+	print(str(datetime.datetime.now()) + ": Finished scraping products from Prisjakt to update PP products table.")
 	sync_prisjakt_products('SE')
+	print(str(datetime.datetime.now()) + ": Finished scraping products from Prisjakt for the PP prisjakt table.")
+	print(str(datetime.datetime.now()) + ": Starting to fetch offers from the PP prisjakt table.")
 	sync_prisjakt_offers('SE')
 	print(str(datetime.datetime.now()) + ": Finished Prisjakt.")
 
