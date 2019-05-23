@@ -16,5 +16,10 @@ RUN apt-get update \
 # Set working directory
 WORKDIR /usr/src/app/
 # CMD ["expect", "./test_expect.bash"]
-ENTRYPOINT expect ./test_expect.bash > /dev/null & python application/main.py
+
+# TODO: I was not able to get the arguments passed in to docker to properly
+# get piped to Sherlocks python program after I did this hacky way for starting
+# openvpn and sherlock in the same docker container. For that reason I have hardcoded
+# pricerunner at the end of the following line which is not ideal.
+CMD expect ./test_expect.bash > /dev/null & python application/main.py --pricerunner
 # ENTRYPOINT ]"python", "application/main.py"]
