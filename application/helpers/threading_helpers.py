@@ -1,6 +1,6 @@
 import threading
 
-def split_tuple(input_data, wanted_num=20) :
+def split_tuple(input_data, wanted_num=10) :
 	num_in_each_bucket = (len(input_data) + 1) / wanted_num
 	buckets = []
 	bucket = []

@@ -16,7 +16,7 @@ def write_products(products_data) :
 				popularity_idx
 			) VALUES 
 		""" + args_str + """
-			ON CONFLICT (name, category, image)
+			ON CONFLICT (name, category)
 			DO UPDATE SET
 				(price, image, popularity_idx)
 				= (EXCLUDED.price, EXCLUDED.image, EXCLUDED.popularity_idx)
