@@ -13,7 +13,9 @@ def persist_image(image_url, product_id) :
 		'products/' + str(product_id) + '.jpg'
 	)
 	try :
-		request = requests.get(image_url)
+		# Get the image URL in http instead of https
+		image_url_http = 'http' + image_url.split('https')[1]
+		request = requests.get(image_url_http)
 	except requests.exceptions.RequestException as e :
 		print("There was an error fetching the image URL: ", e)
 	finally :
