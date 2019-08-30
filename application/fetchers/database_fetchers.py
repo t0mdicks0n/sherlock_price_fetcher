@@ -200,3 +200,20 @@ def fetch_categories() :
 	finally :
 		psql.close_connection()
 		return rows
+
+def fetch_products_with_pj_images() :
+	psql = Database()
+	cur, cur_dict, connection, psycopg2 = psql.get_connection()
+	try :
+		cur_dict.execute("""
+			SELECT
+				*
+			FROM products
+			WHERE image SIMILAR TO '%%pji%%|%%pricespy%%';
+		""")
+		rows = cur_dict.fetchall()
+	except Exception as e :
+		print("There was an error: ", e)
+	finally :
+		psql.close_connection()
+		return rows

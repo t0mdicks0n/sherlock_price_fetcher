@@ -6,3 +6,4 @@ from clear_db import delete_offers
 from clear_db import delete_offer_support_tables
 from exception_print import print_exception
 from update_best_offers import refresh_best_offers_matview
+from cloud_storage import persist_image

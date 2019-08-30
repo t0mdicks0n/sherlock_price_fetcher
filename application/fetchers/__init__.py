@@ -6,6 +6,7 @@ from database_fetchers import fetch_products_without_amazon
 from database_fetchers import fetch_amazon_products
 from database_fetchers import fetch_products_without_ebay
 from database_fetchers import fetch_products_without_kelkoo
+from database_fetchers import fetch_products_with_pj_images
 from amazon_fetchers import search_for_product
 from amazon_fetchers import search_for_offer
 from amazon_fetchers import fetch_amazon_price

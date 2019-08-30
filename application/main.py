@@ -13,6 +13,7 @@ from jobs import sync_prisjakt_offers
 from jobs import offers_support_wipe
 from jobs import get_and_update_forex
 from jobs import sync_best_int_offers
+from jobs import persist_pj_prod_images
 
 import schedule
 import time
@@ -106,6 +107,11 @@ def best_international_offers() :
 	sync_best_int_offers()
 	print(str(datetime.datetime.now()) + ": Finished the international best offers database job.")
 
+def persist_prod_images() :
+	print(str(datetime.datetime.now()) + ": Starting to iterate over product images and persisting on GCP.")
+	persist_pj_prod_images()
+	print(str(datetime.datetime.now()) + ": Finished iterating over product images and persisting on GCP.")
+
 if __name__ == '__main__' :
 	# Instantiate the parser
 	parser = argparse.ArgumentParser(
@@ -188,6 +194,12 @@ if __name__ == '__main__' :
 		action='store_true',
 		help='Run the international best offers database job.'
 	)
+	parser.add_argument(
+		'-pi',
+		'--product-images',
+		action='store_true',
+		help='Iterate over products and persist their images in GCP.'
+	)
 	# Print the help
 	# parser.print_help()
 	# Parse the arguments
@@ -215,5 +227,7 @@ if __name__ == '__main__' :
 		forex()
 	elif args.best_offers :
 		best_international_offers()
+	elif args.product_images :
+		persist_prod_images()
 	else :
 		print str(datetime.datetime.now()) + "No option provided for Sherlock to execute."

@@ -20,6 +20,8 @@ def iterate_over_bucket(bucket, func_to_execute) :
 	# Free memory just in case
 	del bucket
 
+# TODO: The threaded execution expects a country variable and is
+# thus not general. Fix this.
 def threaded_execution(data, job, user_define_job=False, country='SE', ebay_keys=None) :
 	buckets = split_tuple(data)
 	writing_threads = {}

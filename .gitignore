@@ -11,3 +11,4 @@ __pycache__
 
 # API Keys
 *api_keys.json
+*cloud_storage_key.json

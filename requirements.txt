@@ -8,3 +8,4 @@ bottlenose
 schedule
 bs4
 argparse
+google-cloud-storage

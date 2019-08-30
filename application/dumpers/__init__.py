@@ -4,5 +4,6 @@ from amazon_dumpers import del_empty_ama_res
 from offers_dumpers import write_offers
 from offers_dumpers import get_offers_table
 from product_dumpers import write_products
+from product_dumpers import update_image_url
 from prisjakt_dumpers import write_prisjakt
 from forex_dumpers import write_currency
