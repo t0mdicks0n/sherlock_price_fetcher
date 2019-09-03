@@ -20,3 +20,7 @@ from database_fetchers import fetch_categories
 from prisjakt_fetchers import fetch_prisjakt_product_offers
 from forex_fetchers import get_latest_forex
 from forex_fetchers import get_latest_exchange_rate
+from database_fetchers import fetch_retailers_without_trustpilot
+from trustpilot_fetchers import fetch_trustpilot_data
+from database_fetchers import fetch_retailers_without_alexa
+from alexa_fetchers import fetch_alexa_data

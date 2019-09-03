@@ -12,3 +12,5 @@ from prisjakt_products import sync_products
 from forex import get_and_update_forex
 from best_offers import sync_best_int_offers
 from sync_prod_images import persist_pj_prod_images
+from trustpilot import scrape_trustpilot
+from alexa import scrape_alexa

@@ -14,6 +14,8 @@ from jobs import offers_support_wipe
 from jobs import get_and_update_forex
 from jobs import sync_best_int_offers
 from jobs import persist_pj_prod_images
+from jobs import scrape_trustpilot
+from jobs import scrape_alexa
 
 import schedule
 import time
@@ -112,6 +114,16 @@ def persist_prod_images() :
 	persist_pj_prod_images()
 	print(str(datetime.datetime.now()) + ": Finished iterating over product images and persisting on GCP.")
 
+def trustpilot() :
+	print(str(datetime.datetime.now()) + ": Starting to scrape retailer data on Trustpilot.")
+	scrape_trustpilot()
+	print(str(datetime.datetime.now()) + ": Finished scraping retailer data on Trustpilot.")
+
+def alexa() :
+	print(str(datetime.datetime.now()) + ": Starting to scrape retailer data on Alexa.")
+	scrape_alexa()
+	print(str(datetime.datetime.now()) + ": Finished scraping retailer data on Alexa.")
+
 if __name__ == '__main__' :
 	# Instantiate the parser
 	parser = argparse.ArgumentParser(
@@ -200,6 +212,18 @@ if __name__ == '__main__' :
 		action='store_true',
 		help='Iterate over products and persist their images in GCP.'
 	)
+	parser.add_argument(
+		'-tp',
+		'--trustpilot',
+		action='store_true',
+		help='Scrape Trustpilot for their rating of our retailers.'
+	)
+	parser.add_argument(
+		'-al',
+		'--alexa',
+		action='store_true',
+		help='Scrape Alexa for their visitor data on websites.'
+	)
 	# Print the help
 	# parser.print_help()
 	# Parse the arguments
@@ -229,5 +253,9 @@ if __name__ == '__main__' :
 		best_international_offers()
 	elif args.product_images :
 		persist_prod_images()
+	elif args.trustpilot :
+		trustpilot()
+	elif args.alexa :
+		alexa()
 	else :
 		print str(datetime.datetime.now()) + "No option provided for Sherlock to execute."

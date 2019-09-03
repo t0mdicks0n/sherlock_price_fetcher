@@ -7,3 +7,5 @@ from product_dumpers import write_products
 from product_dumpers import update_image_url
 from prisjakt_dumpers import write_prisjakt
 from forex_dumpers import write_currency
+from retail_dumpers import write_trustpilot_rating
+from retail_dumpers import write_alexa_rating

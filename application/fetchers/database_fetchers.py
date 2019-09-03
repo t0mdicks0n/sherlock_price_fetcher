@@ -217,3 +217,44 @@ def fetch_products_with_pj_images() :
 	finally :
 		psql.close_connection()
 		return rows
+
+def fetch_retailers_without_trustpilot() :
+	psql = Database()
+	cur, cur_dict, connection, psycopg2 = psql.get_connection()
+	try :
+		cur_dict.execute("""
+			SELECT
+				A.*
+			FROM retailers A
+			LEFT JOIN trustpilot B
+			ON A.id = B.retailer_id
+			WHERE B.retailer_id IS NULL
+			AND A.name IS NOT NULL;
+		""")
+		rows = cur_dict.fetchall()
+	except Exception as e :
+		print("There was an error: ", e)
+	finally :
+		psql.close_connection()
+		return rows
+
+def fetch_retailers_without_alexa() :
+	psql = Database()
+	cur, cur_dict, connection, psycopg2 = psql.get_connection()
+	try :
+		cur_dict.execute("""
+			SELECT
+				A.*
+			FROM trustpilot A
+			LEFT JOIN alexa B
+			ON A.retailer_id = B.retailer_id
+			WHERE B.retailer_id IS NULL
+			AND A.retailer_url IS NOT NULL
+			LIMIT 1000;
+		""")
+		rows = cur_dict.fetchall()
+	except Exception as e :
+		print("There was an error: ", e)
+	finally :
+		psql.close_connection()
+		return rows
