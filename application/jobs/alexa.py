@@ -8,7 +8,8 @@ def iterate_and_scrape_alexa(retailers) :
 		alexa_data = fetch_alexa_data(retailer['retailer_url'])
 		write_alexa_rating(
 			retailer['id'],
-			alexa_data['site_rank']
+			alexa_data['site_rank'],
+			alexa_data['daily_sec_on_site']
 		)
 
 def scrape_alexa() :

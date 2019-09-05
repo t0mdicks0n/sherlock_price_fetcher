@@ -9,3 +9,4 @@ from prisjakt_dumpers import write_prisjakt
 from forex_dumpers import write_currency
 from retail_dumpers import write_trustpilot_rating
 from retail_dumpers import write_alexa_rating
+from retail_dumpers import write_facebook_data

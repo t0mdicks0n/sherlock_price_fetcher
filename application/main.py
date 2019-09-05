@@ -16,6 +16,7 @@ from jobs import sync_best_int_offers
 from jobs import persist_pj_prod_images
 from jobs import scrape_trustpilot
 from jobs import scrape_alexa
+from jobs import scrape_facebook
 
 import schedule
 import time
@@ -124,6 +125,11 @@ def alexa() :
 	scrape_alexa()
 	print(str(datetime.datetime.now()) + ": Finished scraping retailer data on Alexa.")
 
+def facebook() :
+	print(str(datetime.datetime.now()) + ": Starting to scrape retailer data on Facebook.")
+	scrape_facebook()
+	print(str(datetime.datetime.now()) + ": Finished scraping retailer data on Facebook.")
+
 if __name__ == '__main__' :
 	# Instantiate the parser
 	parser = argparse.ArgumentParser(
@@ -224,6 +230,12 @@ if __name__ == '__main__' :
 		action='store_true',
 		help='Scrape Alexa for their visitor data on websites.'
 	)
+	parser.add_argument(
+		'-fb',
+		'--facebook',
+		action='store_true',
+		help='Scrape Facebook pages for number of likes on retailers.'
+	)
 	# Print the help
 	# parser.print_help()
 	# Parse the arguments
@@ -257,5 +269,7 @@ if __name__ == '__main__' :
 		trustpilot()
 	elif args.alexa :
 		alexa()
+	elif args.facebook :
+		facebook()
 	else :
 		print str(datetime.datetime.now()) + "No option provided for Sherlock to execute."

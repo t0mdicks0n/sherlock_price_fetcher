@@ -24,3 +24,5 @@ from database_fetchers import fetch_retailers_without_trustpilot
 from trustpilot_fetchers import fetch_trustpilot_data
 from database_fetchers import fetch_retailers_without_alexa
 from alexa_fetchers import fetch_alexa_data
+from database_fetchers import fetch_retailers_without_facebook
+from facebook_fetchers import fetch_facebook_data

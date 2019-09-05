@@ -2,6 +2,24 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
+def grab_siterank(soup) :
+	site_rank = None
+	# Check that the metric exist, otherwise return none
+	if len(soup.select(".rankmini-rank")) > 0 :
+		# Regex out only integers
+		site_rank = re.sub("[^0-9]", "", (soup.select(".rankmini-rank")[0]).text)
+	return site_rank
+
+def grab_daily_sec_on_site(soup) :
+	daily_sec_on_site = None
+	# Check that the metric exist, otherwise return none
+	if len(soup.select(".rankmini-daily .rankmini-rank")) > 0 :
+		# Grab and parse out the data as a string, 8:30 for example
+		daily_min_as_string = ((soup.select(".rankmini-daily .rankmini-rank")[0]).text).strip()
+		# Convert the string to minutes 8 * 60 + 30 in this instance
+		daily_sec_on_site = (int(daily_min_as_string.split(':')[0]) * 60) + int(daily_min_as_string.split(':')[1])
+	return daily_sec_on_site
+
 def fetch_alexa_data(retailer_url) :
 	try : 
 		request_string = 'https://www.alexa.com/siteinfo/' + retailer_url
@@ -15,10 +33,7 @@ def fetch_alexa_data(retailer_url) :
 		print("There was an error when fetching data on an Alexa site: ", e)
 	finally :
 		soup = BeautifulSoup(page.content, 'html.parser')
-		site_rank = None
-		if len(soup.select(".rankmini-rank")) > 0 :
-			site_rank = re.sub("[^0-9]", "", (soup.select(".rankmini-rank")[0]).text)
-		# Return the result in right format
 		return {
-			'site_rank': site_rank
+			'site_rank': grab_siterank(soup),
+			'daily_sec_on_site': grab_daily_sec_on_site(soup)
 		}
