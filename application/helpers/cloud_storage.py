@@ -25,4 +25,4 @@ def persist_image(image_url, product_id) :
 			content_type='image/jpg'
 		)
 		# Return the URL of the newly created image
-		return 'https://storage.cloud.google.com/panprices/products/' + str(product_id) + '.jpg'
+		return 'https://storage.googleapis.com/panprices/products/' + str(product_id) + '.jpg'
