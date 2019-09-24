@@ -31,12 +31,12 @@ def iterate_and_fetch_products(products, country) :
 				])
 			elif len(pricerunner_res.get('suggestions') or []) >= 1 :
 				products[i]['url'] = pricerunner_res['suggestions'][0].get('url') or None
-				products[i]['lowest_price'] = pricerunner_res['suggestions'][0].get('lowestPrice') or None				
+				products[i]['lowest_price'] = pricerunner_res['suggestions'][0].get('lowestPrice') or None
 				found_products.append([
 					country,
 					products[i]['id'],
 					products[i]['url'],
-					float(products[i]['lowest_price']['amount'])
+					None if (products[i]['lowest_price'] is None) else float(products[i]['lowest_price']['amount'])
 				])
 			else :
 				found_products.append([
