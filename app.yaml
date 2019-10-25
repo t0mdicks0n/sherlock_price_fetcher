@@ -11,7 +11,7 @@ manual_scaling:
 
 env_variables:
   POSTGRES_USER: "postgres"
-  POSTGRES_PASSWORD: "9GAfs882PI1t9MDG"
+  POSTGRES_PASSWORD: "3pP49KAMpd0HefyA"
   POSTGRES_DBNAME: "prices_prod"
   POSTGRES_HOST: "/cloudsql/panprices:europe-west1:panprices-psql"
 

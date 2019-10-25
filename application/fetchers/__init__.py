@@ -26,3 +26,5 @@ from database_fetchers import fetch_retailers_without_alexa
 from alexa_fetchers import fetch_alexa_data
 from database_fetchers import fetch_retailers_without_facebook
 from facebook_fetchers import fetch_facebook_data
+from database_fetchers import fetch_retailers_without_domain
+from retail_url_fetchers import fetch_url_from_offer

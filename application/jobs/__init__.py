@@ -15,3 +15,4 @@ from sync_prod_images import persist_pj_prod_images
 from trustpilot import scrape_trustpilot
 from alexa import scrape_alexa
 from facebook import scrape_facebook
+from retailer_domains import fetch_domains_from_offers

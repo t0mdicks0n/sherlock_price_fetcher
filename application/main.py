@@ -17,6 +17,7 @@ from jobs import persist_pj_prod_images
 from jobs import scrape_trustpilot
 from jobs import scrape_alexa
 from jobs import scrape_facebook
+from jobs import fetch_domains_from_offers
 
 import schedule
 import time
@@ -76,14 +77,14 @@ def kelkoo() :
 	print(str(datetime.datetime.now()) + ": Finished Kelkoo.")
 
 def prisjakt() :
-	print(str(datetime.datetime.now()) + ": Starting Prisjakt.")
+	print(str(datetime.datetime.now()) + ": Starting scraping products from Prisjakt.")
 	sync_products()
-	print(str(datetime.datetime.now()) + ": Finished scraping products from Prisjakt to update PP products table.")
-	sync_prisjakt_products('SE')
-	print(str(datetime.datetime.now()) + ": Finished scraping products from Prisjakt for the PP prisjakt table.")
-	print(str(datetime.datetime.now()) + ": Starting to fetch offers from the PP prisjakt table.")
-	sync_prisjakt_offers('SE')
-	print(str(datetime.datetime.now()) + ": Finished Prisjakt.")
+	# print(str(datetime.datetime.now()) + ": Finished scraping products from Prisjakt to update PP products table.")
+	# sync_prisjakt_products('SE')
+	# print(str(datetime.datetime.now()) + ": Finished scraping products from Prisjakt for the PP prisjakt table.")
+	# print(str(datetime.datetime.now()) + ": Starting to fetch offers from the PP prisjakt table.")
+	# sync_prisjakt_offers('SE')
+	print(str(datetime.datetime.now()) + ": Finished scraping products from Prisjakt.")
 
 def prisjakt_products() :
 	print(str(datetime.datetime.now()) + ": Starting Prisjakt Products.")
@@ -129,6 +130,11 @@ def facebook() :
 	print(str(datetime.datetime.now()) + ": Starting to scrape retailer data on Facebook.")
 	scrape_facebook()
 	print(str(datetime.datetime.now()) + ": Finished scraping retailer data on Facebook.")
+
+def retailer_domains() :
+	print(str(datetime.datetime.now()) + ": Starting to iterate over retailers and associating a domain with them")
+	fetch_domains_from_offers()
+	print(str(datetime.datetime.now()) + ": Finished iterating over retailers and associating domains.")	
 
 if __name__ == '__main__' :
 	# Instantiate the parser
@@ -236,6 +242,12 @@ if __name__ == '__main__' :
 		action='store_true',
 		help='Scrape Facebook pages for number of likes on retailers.'
 	)
+	parser.add_argument(
+		'-rd',
+		'--retailer_domains',
+		action='store_true',
+		help='Get domains to retailers.'
+	)
 	# Print the help
 	# parser.print_help()
 	# Parse the arguments
@@ -271,5 +283,7 @@ if __name__ == '__main__' :
 		alexa()
 	elif args.facebook :
 		facebook()
+	elif args.retailer_domains :
+		retailer_domains()
 	else :
 		print str(datetime.datetime.now()) + "No option provided for Sherlock to execute."

@@ -269,8 +269,28 @@ def fetch_retailers_without_facebook() :
 			LEFT JOIN facebook B
 			ON A.retailer_id = B.retailer_id
 			WHERE B.retailer_id IS NULL
-			AND A.retailer_url IS NOT NULL
-			LIMIT 1000;
+			AND A.retailer_url IS NOT NULL;
+		""")
+		rows = cur_dict.fetchall()
+	except Exception as e :
+		print("There was an error: ", e)
+	finally :
+		psql.close_connection()
+		return rows
+
+def fetch_retailers_without_domain() :
+	psql = Database()
+	cur, cur_dict, connection, psycopg2 = psql.get_connection()
+	try :
+		cur_dict.execute("""
+			SELECT
+				DISTINCT ON(offer_source, retailer_name)
+				offer_source,
+				retailer_name,
+				offer_url
+			FROM offers_table_executor('SELECT * FROM offers')
+			WHERE offer_source NOT SIMILAR TO 'ebay%|ama%|kelkoo%'
+			LIMIT 10;
 		""")
 		rows = cur_dict.fetchall()
 	except Exception as e :
